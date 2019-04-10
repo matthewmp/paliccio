@@ -1,0 +1,12 @@
+.menu ul {
+    margin-top: 82px;
+    text-align: center;
+    font-family: 'Seaweed Script';
+}
+
+.menu ul li {
+    font-size: 2.5rem;
+    padding: 27px;
+    color: #EF005B;
+    text-decoration: underline;
+}

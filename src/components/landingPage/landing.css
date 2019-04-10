@@ -1,0 +1,7 @@
+.landing-page{
+    min-height: 100vh;
+    background: linear-gradient( rgba(239, 0, 91, 0.95), rgba(239, 0, 91, 0.95) ),url(/images/landing_1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
