@@ -1,7 +1,71 @@
 .landing-page{
+    position: relative;
     min-height: 100vh;
     background: linear-gradient( rgba(239, 0, 91, 0.95), rgba(239, 0, 91, 0.95) ),url(/images/landing_1.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.landing-content {
+    font-family: 'Seaweed Script';
+    color: #fff;
+    font-size: 72px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slogan {
+    line-height: 3.8rem;
+}
+
+.landing-login {
+    text-align: center;
+}
+
+.landing-login ul{
+    margin: 0;
+}
+
+.landing-login li {
+    max-height: 10px;
+    font-family: 'Roboto';
+    font-size: 0.8rem;
+    display: inline-block;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 775px) {
+    .slogan {
+        font-size: 40px;
+        line-height: 2.2rem;
+    }
+}
+
+@media only screen and (max-width: 775px) {
+    .slogan {
+        font-size: 37px;
+    }
+}
+
+@media only screen and (max-width: 395px) {
+    .slogan {
+        font-size: 34px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .slogan {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 316px) {
+    .slogan {
+        font-size: 20px;
+    }
 }
