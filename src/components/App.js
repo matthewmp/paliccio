@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Landing from './landingPage/Landing';
+
+import './app.css';
 class App extends Component {
   render() {
     return (

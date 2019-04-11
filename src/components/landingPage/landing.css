@@ -18,7 +18,7 @@
 }
 
 .slogan {
-    line-height: 3.8rem;
+    line-height: 4.5rem;
 }
 
 .landing-login {
@@ -32,7 +32,7 @@
 .landing-login li {
     max-height: 10px;
     font-family: 'Roboto';
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     display: inline-block;
     margin: 0 2px;
     cursor: pointer;
@@ -42,7 +42,11 @@
 @media only screen and (max-width: 775px) {
     .slogan {
         font-size: 40px;
-        line-height: 2.2rem;
+        line-height: 3rem;
+    }
+
+    .landing-login li {
+        font-size: 1rem;
     }
 }
 
