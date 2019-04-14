@@ -5,8 +5,19 @@
   transform: translate(-50%, -50%);
   width: 50%;
   height: 50%;
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 300px;
+  min-height: 200px;
   background: #9e2252;
   border-radius: 11px;
+}
+
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .login-X-close {
@@ -20,4 +31,24 @@
   text-align: center;
   line-height: 35px;
   color: #9e2252;
+}
+
+.login-input-wrapper{
+  width: 80%;
+  text-align: center;
+}
+
+.inp-label {
+  display: block;
+  text-align: left;
+  width: 80%;
+  margin: auto;
+  font-family: 'Seaweed Script';
+  color: #fff;
+}
+
+input {
+  min-height: 20px;
+  border-radius: 3px !important;
+  width: 80% !important;
 }

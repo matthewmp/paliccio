@@ -1,3 +1,7 @@
 html {
     font-size: 10px;
 }
+
+input{
+    background: #fff !important;
+}
