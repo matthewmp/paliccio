@@ -5,6 +5,10 @@
   transform: translate(-50%, -50%);
   width: 50%;
   height: 50%;
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 300px;
+  min-height: 200px;
   background: #9e2252;
   border-radius: 11px;
 }
@@ -20,4 +24,9 @@
   text-align: center;
   line-height: 35px;
   color: #9e2252;
+}
+
+input {
+  min-height: 20px;
+  background: #fff !important;
 }

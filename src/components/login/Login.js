@@ -6,7 +6,16 @@ class Login extends React.Component {
     return (
       <div className="login-wrapper">
         <div className="login-X-close">X</div>
-        <form id="login" />
+        <form id="login-form">
+          <div>
+            <input
+              id="inpUserName"
+              type="text"
+              placeholder="Username"
+              required
+            />
+          </div>
+        </form>
       </div>
     );
   }
