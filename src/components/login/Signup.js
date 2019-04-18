@@ -1,23 +1,26 @@
 import React from "react";
 
 import "./login.css";
-class Login extends React.Component {
+export default class Signup extends React.Component {
   constructor(props){
     super(props);
     this.username = React.createRef();
     this.password = React.createRef();
+    this.confirmpass = React.createRef();
   }
   state = {
     show: false,
     username: '',
-    password: ''
+    password: '',
+    confirmpass: ''
   }
 
   handleChange = (e) => {
     e.preventDefault();
     this.setState({
       username: this.username.current.value,
-      password: this.password.current.value
+      password: this.password.current.value,
+      confirmpass: this.confirmpass.current.value
     })
   }
 
@@ -28,7 +31,7 @@ class Login extends React.Component {
   render() {
     return (
       
-        <form id="login-form">
+        <form id="signup-form">
           <div className="login-input-wrapper">
             <div className="inp-username-wrapper">
               <label className="inp-label" htmlFor="inpUserName" >Username</label>
@@ -54,13 +57,23 @@ class Login extends React.Component {
               />
             </div> 
 
+            <div className="inp-password-wrapper">
+              <label className="inp-label" htmlFor="inpConfirmPassword" >Confirm Password</label>
+              <input
+                id="inpConfirmPassword"
+                type="password"
+                ref={this.confirmpass} 
+                value={this.state.confirmpass} 
+                onChange={this.handleChange}
+                required
+              />
+            </div>  
+
             <button type="submit" className= "btn-submit" 
               onSubmit={this.handleSubmit}>Login
-            </button>
+            </button>    
           </div>
         </form>
     );
   }
 }
-
-export default Login;

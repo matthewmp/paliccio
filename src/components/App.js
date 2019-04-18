@@ -1,21 +1,24 @@
 import React, { Component } from "react";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
-import Landing from "./landingPage/Landing";
-import Login from "./login/Login";
+import Landing from "./landingPage/Landing";  
 
 import './app.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Landing />
-        <Login />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Landing} />
+          </Switch>
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }

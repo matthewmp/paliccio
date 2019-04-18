@@ -1,7 +1,7 @@
 .login-wrapper {
-  display: none;
+  /* display: none; */
   position: absolute;
-  top: 50%;
+  top: calc(50% - 100px);
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
@@ -9,12 +9,12 @@
   max-width: 540px;
   max-height: 415px;
   min-width: 300px;
-  min-height: 250px;
+  min-height: 350px;
   background: #9e2252;
   border-radius: 11px;
 }
 
-#login-form {
+#login-form, #signup-form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,11 +63,29 @@ input {
   width: 80% !important;
 }
 
-input#inpUserName, input#inpUserPassword {
+input#inpUserName, input#inpUserPassword, input#inpConfirmPassword{
   font-family: 'Poppins';
   text-align: center;
   font-size: 2rem;
   color: #EF005B;
+}
+
+.btn-submit {
+  border-style: none;
+  min-width: 100px;
+  min-height: 50px;
+  border-radius: 3px;
+  background: #fff;
+  font-size: 1.3rem;
+  color: #9e2252;
+}
+
+#login-form .btn-submit {
+  margin-top: 30px;
+}
+
+#signup-form .btn-submit {
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 700px) {
