@@ -1,17 +1,31 @@
 import React from 'react';
-import Login from './Login';
-import Signup from './Signup';
+import Login from './LoginForm';
+import Signup from './SignupForm';
 import './login.css';
 
-const Modal = (props) =>{
-    const formType = props.type === 'login' ? <Login /> : <Signup />;
-    console.log(props.type)
-    return (
-        <div className='login-wrapper'>
-            <div className="login-X-close" onClick={props.close}>&times;</div>
-            {formType}
-        </div>
-    )
+class Modal extends React.Component{
+    state = {
+        show: true,
+        formType: 'login'
+    }
+
+    close = () => {
+        this.setState({show: !this.state.show});
+    }
+
+    render(){
+        let loginClass = this.state.show ? 'login-wrapper' : 'login-wrapper hidden';
+        // const formType = props.type === 'login' ? <Login /> : <Signup />;
+        // console.log(props.type)
+        return (
+            <div className={loginClass}>
+                <div className="login-X-close" onClick={this.close}>&times;</div>
+                {/* {formType} */}
+                sing in | log in
+            </div>
+        )
+    }
+    
 }
 
 export default Modal;

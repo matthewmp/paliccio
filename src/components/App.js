@@ -3,7 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
-import Landing from "./landingPage/Landing";  
+import Landing from "./landingPage/Landing";
+import Modal from './login/Modal';
+import Login from './login/Login';
 
 import './app.css';
 
