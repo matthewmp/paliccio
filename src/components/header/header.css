@@ -7,6 +7,7 @@ header {
 
 .header-wrapper{
     height: 100%;
+    background: #EF005B !important;
 }
 
 .nav{
@@ -20,15 +21,13 @@ header {
 }
 
 .headerImage {
-    width: 68px;
-    height: 60px;
-    display: block;
+    width: 60px;
 }
 
 .logo {
     display: inline-block;
     padding-top: 10px !important;
-    color: #9E2252;
+    color: #FFF;
     font-family: 'Satisfy';
     font-size: 5.5rem;
   }
@@ -41,14 +40,14 @@ header {
     position: relative;
     width: 40px;
     height: 7px;
-    background: #ED6D9E
+    background: #FFF
 }
 
 .middle-bar {
     position: relative;
     width: 40px;
     height: 7px;
-    background: #ED6D9E;
+    background: #FFF;
     margin-top: 5px
 }
 
@@ -56,7 +55,7 @@ header {
     position: relative;
     width: 40px;
     height: 7px;
-    background: #ED6D9E;
+    background: #FFF;
     margin-top: 5px
 }
 
@@ -92,7 +91,7 @@ header {
     width: 33vw;
     max-width: 350px;
     height: 100%;
-    background: #F4EDF0;
+    background: #9E2252;
     overflow: scroll;
 }
 

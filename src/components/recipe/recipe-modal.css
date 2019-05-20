@@ -1,0 +1,28 @@
+.recipe-modal {
+    border: 3px solid #EF005B;
+    background: #fff;
+    width: 90vw;
+    height: 80vh;
+    margin: auto;
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 23px;
+}
+
+.xClose {
+    position: absolute;
+    right: 10px;
+    margin: 10px;
+    font-size: 4rem;
+    border: 5px solid #EF005B;
+    color: #EF005B;
+    border-radius: 50%;
+    width: 5.5rem;
+    height: 5.5rem;
+    text-align: center;
+    line-height: 3.5rem;
+    cursor: pointer;
+}

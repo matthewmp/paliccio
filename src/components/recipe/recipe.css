@@ -1,0 +1,66 @@
+span.card-title {
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.new-recipe-header{
+    width: 30%;
+    max-width: 350px;
+    min-width: 200px;
+    height: 53px;
+    background: #9E2252;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    letter-spacing: 2.5px;
+    font-size: 1.5rem;
+    margin: 45px 0 45px 0;
+
+}
+
+.card{
+    margin: 10px;
+}
+
+.tile-container{
+    position: relative;
+}
+
+.recipe-card-hover {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(239, 0, 91, 0.91);
+    color: #fff;
+    cursor: pointer;
+}
+
+.hover-title {
+    border: 3px solid #fff;
+    width: 80%;
+    text-align: center;
+    font-family: 'Satisfy';
+    font-size: 1.5rem;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.hover-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.hover-info span {
+    padding: 3px;
+    font-size: 1.2rem;
+}
+
+.invisible {
+    opacity: 0;
+}

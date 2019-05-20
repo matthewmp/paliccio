@@ -9,7 +9,7 @@ export default class Header extends Component {
           <div className="row valign-wrapper header-wrapper">
             <div className="col s4">
               <div className="img-container">
-                <img className="headerImage" src="./images/test.svg" alt="pasta"/>
+                <img className="headerImage" src="./images/pasta_white.svg" alt="pasta"/>
               </div>
             </div>  
             <span className="logo col s4 center-align" >Paliccio</span>

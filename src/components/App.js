@@ -4,20 +4,32 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import Landing from "./landingPage/Landing";
-import Modal from './login/Modal';
-import Login from './login/Login';
+
+import RecipeModal from './recipe/RecipeModal';
 
 import './app.css';
 
 class App extends Component {
+  state = {
+    showModal: false
+  }
+
+  toggleModal = (e) => {
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
+
   render() {
+    let recipeModal = this.state.showModal ? <RecipeModal toggleModal={this.toggleModal}/> : '';
     return (
       <BrowserRouter>
         <div className="App">
           <Header />
           <Switch>
-            <Route exact path='/' component={Landing} />
+            <Route exact path='/' render={() => <Landing  toggleModal={this.toggleModal} />}  />
           </Switch>
+          {recipeModal}
           <Footer />
         </div>
       </BrowserRouter>
