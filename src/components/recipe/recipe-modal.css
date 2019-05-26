@@ -2,6 +2,7 @@
     border: 3px solid #EF005B;
     background: #fff;
     width: 90vw;
+    max-width: 1100px;
     height: 80vh;
     margin: auto;
     position: fixed;
@@ -10,6 +11,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 23px;
+    overflow: scroll;
+}
+
+.recipe-modal::-webkit-scrollbar {
+    display: none;
 }
 
 .xClose {
@@ -26,3 +32,171 @@
     line-height: 3.5rem;
     cursor: pointer;
 }
+
+.recipe-modal-header{
+    text-align: center;
+}
+
+.recipe-modal-header-r1 {
+    min-height: 200px !important;
+    min-width: 200px !important;
+    margin-top: 30px;
+}
+
+.recipe-modal-header-r1.img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-image{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.recipe-title, .chef-title, .chef-title-label {
+    text-align: center;
+    padding: 10px;
+    font-size: 5rem;
+    font-family: 'Satisfy';
+    letter-spacing: 5px;
+}
+
+.chef-title{
+    font-family: 'Poppins';
+    display: block;
+}
+
+.clock-wrapper, .prep-time-wrapper, .cook-time-wrapper{
+    border-right: 1px solid #909090;
+    min-height: 60px !important;
+}
+
+.clock-wrapper{
+    display: flex;
+}
+
+.clock-wrapper img {
+    max-width: 40px;
+}
+
+.cook-time-wrapper, .prep-time-wrapper, .recipe-votes-wrapper{
+    min-height: 60px !important;
+}
+
+.recipe-time-info.row {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+}
+
+.recipe-time-info {
+    display: flex;
+    align-items: center;
+}
+
+.cal-servings-wrapper {
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.recipe-header-label, .min-hour{
+    color: #909090;
+    font-size: 1.2rem;
+    padding-top: 10px;
+}
+
+.recipe-header-number{
+    color: #222;
+    font-size: 1.2rem;
+}
+
+.calories, .servings {
+    padding: 0 5px;
+}
+
+.divider{
+    background: #EF005B;
+    margin: auto;
+    max-width: 90%;
+}
+
+.chef-info.container {
+    padding: 50px 0;
+}
+
+.chef-info-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+span.chef-title-label, .chef-title, .ingredients-label,  .instructions-label  {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    padding: 0;
+    font-family: 'Satisfy';
+}
+
+
+span.chef-avatar {
+    padding-left: 25px;
+}
+
+.chef-avatar img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.recipe-votes-container{
+    text-align: center;
+}
+
+.up-vote, .down-vote{
+    cursor: pointer;
+}
+
+.up-vote img, .down-vote img {
+    max-width: 25px !important;
+}
+
+.ingredients-info, .instructions-info {
+    padding: 50px 0;
+}
+
+span.ingredients-label{
+    display: block;
+    text-align: center;
+}
+
+.ingredient-wrapper, .instruction-wrapper {
+    display: flex;
+    margin: 5px 0;
+    font-size: 2.5rem;
+    font-family: 'Satisfy';
+    justify-content: center;
+}
+
+span.ingredient-list-number, span.instruction-list-number {
+    display: inline-block;
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    border: 1px solid #222;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 25px;
+}
+
+span.ingredient-list-item, span.instruction-list-item {
+    letter-spacing: 5px;
+    font-family: 'Satisfy';
+}
+
+
+
+
