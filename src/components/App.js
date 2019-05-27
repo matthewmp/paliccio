@@ -6,6 +6,7 @@ import Footer from "./footer/Footer";
 import Landing from "./landingPage/Landing";
 
 import RecipeModal from './recipe/RecipeModal';
+import AddEditModal from './add_modify_modal/AddEditModal';
 
 import './app.css';
 
@@ -30,6 +31,7 @@ class App extends Component {
             <Route exact path='/' render={() => <Landing  toggleModal={this.toggleModal} />}  />
           </Switch>
           {recipeModal}
+          <AddEditModal />
           <Footer />
         </div>
       </BrowserRouter>

@@ -1,0 +1,38 @@
+$whitePhase: rgba(255,255,255,0.7);
+$pinkPhase: rgba(239,0,91, 0.85);
+
+.add-edit-modal-overlay{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+
+    .add-edit-modal-wrapper {
+        position: relative;
+        width: 80%;
+        height: 80vh;
+        background: $pinkPhase;
+        border-radius: 42px;
+    }
+
+    .add-edit-modal-close {
+        border: 3px solid #fff;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 55px;
+        height: 55px;
+        text-align: center;
+        line-height: 42px;
+        font-size: 5.5rem;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        z-index: 1010;
+    }
+}
