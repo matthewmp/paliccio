@@ -1,4 +1,6 @@
 $whitePhase: rgba(255,255,255,0.7);
+$white: #fff;
+$hotPink: #EF005B;
 $pinkPhase: rgba(239,0,91, 0.85);
 
 .add-edit-modal-overlay{
@@ -36,3 +38,44 @@ $pinkPhase: rgba(239,0,91, 0.85);
         z-index: 1010;
     }
 }
+
+section.add-edit-recipe-view.general-info {
+    text-align: center;
+
+    .add-edit-recipe-label {
+        text-align: center;
+        margin: 5% auto 10px auto;
+        font-size: 4.8rem;
+        font-family: 'Seaweed Script';
+        color: $white;
+    }
+
+    input.add-edit-recipe-name {
+        width: 50% !important;
+        min-height: 50px;
+        text-align: center;
+        font-size: 3rem !important;
+        color: $hotPink;
+        letter-spacing: 3px;
+        font-family: 'Poppins';
+        border-radius: 4px !important;
+    }
+
+    textarea#recipe-description {
+        display: block;
+        resize: none;
+        background: white;
+        width: 50%;
+        margin: auto;
+        border-style: none;
+        border-radius: 4px;
+        min-height: 250px;
+        max-height: 400px;
+        height: 50%;
+        font-size: 2rem !important;
+        color: $hotPink;
+        font-family: 'Poppins';
+        padding: 5px 15px;
+    }
+}
+
