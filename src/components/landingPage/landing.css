@@ -22,6 +22,7 @@
     letter-spacing: 0.2rem;
     font-size: 1.8rem !important;
     color: #9E2252;
+    width: 60% !important;
 }
 
 .inp-search:focus {
@@ -39,5 +40,13 @@ button.btn-search {
 }
 /* Responsive CSS Starts Here */
 
+@media screen and (max-width: 995px){
+    .row .col.offset-s2{
+        margin-left: auto;
+    }
+    .chef-info-wrapper{
+        justify-content:center;
+    }
+}
 
 /* Responsive CSS Ends Here */
