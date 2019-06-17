@@ -20,7 +20,16 @@ export default class AddGeneralInfo extends Component {
                         onChange={this.props.handleDescriptionChange}
                         value={this.props.descriptionVal}>
                     </textarea>
-                    <button className="add-recipe-next" type="button">Next</button>
+                    <div className="add-recipe-btn-wrapper" id="add-recipe-btn-prime">
+                        <button 
+                            className="add-recipe" 
+                            id="generalNext" 
+                            type="button" 
+                            data-transition="-100" 
+                            onClick={(this.props.transition)}>Next
+                        </button>    
+                    </div>
+                    
                 </div>
             </section>
         )

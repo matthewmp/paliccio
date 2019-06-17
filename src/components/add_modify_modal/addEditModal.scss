@@ -20,6 +20,11 @@ $pinkPhase: rgba(239,0,91, 0.85);
         height: 80vh;
         background: $pinkPhase;
         border-radius: 42px;
+
+        #add-edit-recipe-form{
+            white-space: nowrap;
+            overflow: hidden;
+        }
     }
 
     .add-edit-modal-close {
@@ -39,8 +44,11 @@ $pinkPhase: rgba(239,0,91, 0.85);
     }
 }
 
-section.add-edit-recipe-view.general-info {
+section.add-edit-recipe-view {
     text-align: center;
+    display: inline-block;
+    width: 100%;
+    transition: all 1s;
 
     .add-edit-recipe-label {
         text-align: center;
@@ -51,6 +59,8 @@ section.add-edit-recipe-view.general-info {
     }
 
     .add-recipe-inputs-wrapper {
+        display: flex;
+        flex-direction: column;
         width: 50%;
         margin: auto;
         text-align: right;
@@ -80,17 +90,31 @@ section.add-edit-recipe-view.general-info {
             font-family: 'Poppins';
             padding: 5px 15px;
         }
-    
-        button.add-recipe-next {
-            border-style: none;
-            font-size: 2.5rem;
-            margin: 10px 0 0 0;
-            background: transparent;
-            color: #fff;
-            font-family: 'Poppins';
-            letter-spacing: 4px;
-            cursor: pointer;
-        }
     }
+
+    button.add-recipe {
+        border-style: none;
+        font-size: 2.5rem;
+        margin: 10px 0 0 0;
+        background: transparent;
+        color: #fff;
+        font-family: 'Poppins';
+        letter-spacing: 4px;
+        cursor: pointer;
+    }
+    .add-recipe-btn-wrapper {
+        display: flex;
+        width: 50%;
+        margin: auto;
+        justify-content: space-between;
+    }
+
+    #add-recipe-btn-prime {
+        flex-direction: row-reverse;
+        width: 100%;
+    }
+    
 }
+
+
 
