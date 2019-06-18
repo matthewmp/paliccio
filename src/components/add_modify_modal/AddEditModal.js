@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AddGeneralInfo from './AddGeneralInfo';
 import AddCaloriesServings from './AddCaloriesServings';
 import AddCookPrepTime from './AddCookPrepTime';
+import AddIngredients from './AddIngredients';
 
 import './addEditModal.scss';
 
@@ -12,7 +13,8 @@ export default class AddEditModal extends Component {
         calories: '',
         servings: '',
         cookTime: '',
-        prepTime: ''
+        prepTime: '',
+        ingredients: []
 
     }
 
@@ -38,6 +40,14 @@ export default class AddEditModal extends Component {
 
     handleCookTimeChange = (e) => {
         this.setState({cookTime: e.target.value})
+    }
+
+    handleAddIngredient = (e) => {
+        console.log("Add Ingredient");
+    }
+
+    handleRemoveIngredient = (e) => {
+        console.log("Remove Ingredient");
     }
 
     transition = (e) => {
@@ -73,6 +83,13 @@ export default class AddEditModal extends Component {
                         <AddCookPrepTime
                             handlePrepTimeChange={this.handlePrepTimeChange}
                             handleCookTimeChange={this.handleCookTimeChange}
+                            prepTimeVal={this.state.prepTime}
+                            cookTimeVal={this.state.cookTime}
+                            transition={this.transition}/>
+                        
+                        <AddIngredients
+                            handleAddIngredient={this.handleAddIngredient}
+                            handleRemoveIngredient={this.handleRemoveIngredient}
                             prepTimeVal={this.state.prepTime}
                             cookTimeVal={this.state.cookTime}
                             transition={this.transition}/>

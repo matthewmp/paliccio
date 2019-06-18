@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class AddCookPrepTime extends Component {
     render() {
         return (
-            <section className="add-edit-recipe-view calories-servings-info">
+            <section className="add-edit-recipe-view cook-prep-info">
             <div className="add-edit-recipe-label">Cook / Prep Time</div>
                 <div className="add-recipe-inputs-wrapper">
                     <input className="add-edit-recipe-name" 
@@ -31,8 +31,9 @@ export default class AddCookPrepTime extends Component {
                     className="add-recipe" 
                     id="servingsNext" 
                     type="button"
-                    
-                    onClick={this.props.transition}>Next</button>
+                    data-transition="-300"
+                    onClick={this.props.transition}>Next
+                </button>
             </section>
         )
     }
