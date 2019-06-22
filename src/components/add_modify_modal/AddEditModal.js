@@ -53,7 +53,7 @@ export default class AddEditModal extends Component {
     transition = (e) => {
         const transitionAmount = e.target.dataset.transition;
         const editRecipeViews = document.getElementsByClassName('add-edit-recipe-view');
-        console.log(editRecipeViews)
+        
         for(let i = 0; i < editRecipeViews.length; i++){
             let element = editRecipeViews[i];
             element.style.transform = `translateX(${transitionAmount}%)`;

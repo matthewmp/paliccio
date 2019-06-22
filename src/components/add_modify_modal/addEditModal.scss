@@ -90,6 +90,11 @@ section.add-edit-recipe-view {
             font-family: 'Poppins';
             padding: 5px 15px;
         }
+
+        /* Add ingredients */
+        .add-ingredient-wrapper {
+            display: flex;
+        }
     }
 
     button.add-recipe {
@@ -108,7 +113,7 @@ section.add-edit-recipe-view {
         margin: auto;
         justify-content: space-between;
     }
-
+    /* First "Next" button in Add/Edit recipe modal */
     #add-recipe-btn-prime {
         flex-direction: row-reverse;
         width: 100%;
