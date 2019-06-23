@@ -1,6 +1,11 @@
 import React from 'react';
 
 export default class Ingredient extends React.Component{
+    constructor(props){
+        super(props);
+        this.ingredient = React.createRef();
+        this.amount = React.createRef()
+    }
     state = {
         ingredient: '',
         quantity: ''
@@ -18,31 +23,43 @@ export default class Ingredient extends React.Component{
         })
     }
 
+    handleAddIngredient = () => {
+        if(this.ingredient.current.value.trim() !== "" && this.amount.current.value !== ""){
+            this.props.add();
+        }
+    }
+
     render(){
         return(
             <div className="add-ingredient-wrapper" data-id={this.props.dataId}>
                 <input 
+                    tabIndex="-1" 
                     type="text" 
-                    className="inp-ingredient" 
+                    className="inp-ingredient add-edit-recipe-input" 
                     placeholder="Type Ingredient"
                     value={this.state.ingredient}
                     onChange={this.handleIngredientChange}
+                    ref={this.ingredient}
                     required 
                 />
                 <input 
+                    tabIndex="-1" 
                     type="text" 
-                    className="inp-amount" 
+                    className="inp-amount add-edit-recipe-input" 
                     placeholder="Type Quantity i.e 2tsp" 
                     value={this.state.quantity}
                     onChange={this.handleQuantityChange}
+                    ref={this.amount}
                     required
                 />
                 <button 
+                    tabIndex="-1"
                     type="button" 
                     className="btn-add-ingredient"
-                    onClick={this.props.add}
+                    onClick={this.handleAddIngredient}
                     >+</button>
                 <button 
+                    tabIndex="-1"
                     type="button" 
                     className="btn-add-ingredient"
                     onClick={this.props.remove}

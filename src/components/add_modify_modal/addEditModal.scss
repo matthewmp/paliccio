@@ -65,7 +65,7 @@ section.add-edit-recipe-view {
         margin: auto;
         text-align: right;
 
-        input.add-edit-recipe-name {
+        input.add-edit-recipe-input {
             min-height: 50px;
             text-align: center;
             font-size: 3rem !important;
@@ -94,6 +94,11 @@ section.add-edit-recipe-view {
         /* Add ingredients */
         .add-ingredient-wrapper {
             display: flex;
+
+            .sing-ingredient-container{
+                display: flex;
+                width: 100%;
+            }
         }
     }
 
@@ -112,6 +117,14 @@ section.add-edit-recipe-view {
         width: 50%;
         margin: auto;
         justify-content: space-between;
+            .form-error{
+                color: #fff;
+                font-size: 1.2rem;
+                min-height: 30px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
     }
     /* First "Next" button in Add/Edit recipe modal */
     #add-recipe-btn-prime {

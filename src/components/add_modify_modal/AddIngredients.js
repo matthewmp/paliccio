@@ -3,6 +3,11 @@ import Ingredient from './Ingredient';
 import './addEditModal.scss';
 
 export default class AddIngredients extends Component {
+    constructor(props){
+        super(props);
+        this.ingredientConatiner = React.createRef();
+    }
+
     state = {
         ingredients: [],
         length: 0
@@ -15,7 +20,6 @@ export default class AddIngredients extends Component {
     }
 
     addIngredient = (e) => {
-        console.log('Adding Ingredient');
         this.setState({
             ingredients: this.state.ingredients.concat(
                 <Ingredient 
@@ -26,7 +30,16 @@ export default class AddIngredients extends Component {
                     className = {this.state.ingredients.length + 1}
                 />
             )
-        })
+        });
+    }
+
+    collectAllIngredients = () => {
+        const allIngredientWrappers = [...this.ingredientConatiner.current.childNodes];
+        let ingredientsObject = allIngredientWrappers.map((node) => {
+            return {ingredient: node.childNodes[0].value, amount: node.childNodes[1].value}
+        });
+
+        this.props.getIngredients(ingredientsObject);
     }
 
     removeIngredient = (e) => {
@@ -36,9 +49,6 @@ export default class AddIngredients extends Component {
             tmpState.splice((id-1), 1);
             this.setState({ingredients: tmpState})
         }
-        
-        
-        
     }
     render() {
         let ingredientComponents = [];
@@ -52,20 +62,25 @@ export default class AddIngredients extends Component {
             <section className="add-edit-recipe-view add-ingredients">
                 <div className="add-edit-recipe-label">Add Ingredients</div>
                 <div className="add-recipe-inputs-wrapper">
-                    {ingredientComponents}
+                    <div className="ingredient-component-container" ref={this.ingredientConatiner} onChange={this.collectAllIngredients}>
+                        {ingredientComponents}
+                    </div>
+                    
                     <div className="add-recipe-btn-wrapper">
-                        <button 
+                        <button
+                            tabIndex="-1" 
                             className="add-recipe" 
                             id="servingsPrevious" 
                             type="button"
                             data-transition="-200"
                             onClick={this.props.transition}>Previous
                         </button>
-                        <button 
+                        <button
+                            tabIndex="-1" 
                             className="add-recipe" 
                             id="servingsNext" 
-                            type="button"
-                            onClick={this.props.transition}>Next
+                            type="submit"
+                            onClick={this.props.submit}>Submit
                         </button>
                     </div>
                 </div>

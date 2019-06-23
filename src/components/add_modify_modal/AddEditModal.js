@@ -14,7 +14,8 @@ export default class AddEditModal extends Component {
         servings: '',
         cookTime: '',
         prepTime: '',
-        ingredients: []
+        ingredients: [],
+        transition: "0"
 
     }
 
@@ -42,12 +43,17 @@ export default class AddEditModal extends Component {
         this.setState({cookTime: e.target.value})
     }
 
-    handleAddIngredient = (e) => {
-        console.log("Add Ingredient");
+    getIngredients = (ingredients) => {
+        this.setState({ingredients: ingredients})
     }
 
     handleRemoveIngredient = (e) => {
         console.log("Remove Ingredient");
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
     }
 
     transition = (e) => {
@@ -58,19 +64,21 @@ export default class AddEditModal extends Component {
             let element = editRecipeViews[i];
             element.style.transform = `translateX(${transitionAmount}%)`;
         }
+        this.setState({transition: transitionAmount})
     }
 
     render() {
         return (
             <div className="add-edit-modal-overlay">
                 <div className="add-edit-modal-wrapper">
-                    <div className="add-edit-modal-close">&times;</div>
+                    <div className="add-edit-modal-close" onClick={this.props.showHide}>&times;</div>
                     <form id="add-edit-recipe-form">
                         <AddGeneralInfo 
                         handleNameChange={this.handleNameChange} 
                         handleDescriptionChange={this.handleDescriptionChange}
                         nameVal={this.state.name}
                         descriptionVal={this.state.description}
+                        currentTransition={this.state.transition}
                         transition={this.transition}/>
 
                         <AddCaloriesServings 
@@ -78,6 +86,7 @@ export default class AddEditModal extends Component {
                             handleServingsChange={this.handleServingsChange}
                             caloriesVal={this.state.calories}
                             servingsVal={this.state.servings}
+                            currentTransition={this.state.transition}
                             transition={this.transition}/>
 
                         <AddCookPrepTime
@@ -85,13 +94,17 @@ export default class AddEditModal extends Component {
                             handleCookTimeChange={this.handleCookTimeChange}
                             prepTimeVal={this.state.prepTime}
                             cookTimeVal={this.state.cookTime}
+                            currentTransition={this.state.transition}
                             transition={this.transition}/>
                         
                         <AddIngredients
                             handleAddIngredient={this.handleAddIngredient}
                             handleRemoveIngredient={this.handleRemoveIngredient}
+                            submit={this.handleFormSubmit}
+                            getIngredients={this.getIngredients}
                             prepTimeVal={this.state.prepTime}
                             cookTimeVal={this.state.cookTime}
+                            currentTransition={this.state.transition}
                             transition={this.transition}/>
                     </form>
                         
