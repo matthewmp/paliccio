@@ -19,18 +19,33 @@ export default class AddIngredients extends Component {
         }
     }
 
-    addIngredient = (e) => {
-        this.setState({
-            ingredients: this.state.ingredients.concat(
-                <Ingredient 
-                    key={this.state.ingredients.length + 1}
-                    dataId={this.state.ingredients.length + 1}
-                    add={this.addIngredient}
-                    remove={this.removeIngredient}
-                    className = {this.state.ingredients.length + 1}
-                />
-            )
+    inputsAreFilled = (ingredientContainerElement) => {
+        let areFilled = true;
+        ingredientContainerElement.forEach(container => {
+            if(container.childNodes[0].value.trim() === "" || container.childNodes[1].value.trim() === ""){
+                areFilled = false;
+            }
         });
+        return areFilled;
+    }
+
+    addIngredient = (e) => {
+        console.log(this.ingredientConatiner.current.childNodes)
+        
+        
+        if(this.inputsAreFilled(this.ingredientConatiner.current.childNodes)){
+            this.setState({
+                ingredients: this.state.ingredients.concat(
+                    <Ingredient 
+                        key={this.state.ingredients.length + 1}
+                        dataId={this.state.ingredients.length + 1}
+                        add={this.addIngredient}
+                        remove={this.removeIngredient}
+                        className = {this.state.ingredients.length + 1}
+                    />
+                )
+            });
+        };
     }
 
     collectAllIngredients = () => {
