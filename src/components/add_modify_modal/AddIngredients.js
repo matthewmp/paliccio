@@ -30,9 +30,6 @@ export default class AddIngredients extends Component {
     }
 
     addIngredient = (e) => {
-        console.log(this.ingredientConatiner.current.childNodes)
-        
-        
         if(this.inputsAreFilled(this.ingredientConatiner.current.childNodes)){
             this.setState({
                 ingredients: this.state.ingredients.concat(
@@ -51,9 +48,12 @@ export default class AddIngredients extends Component {
     collectAllIngredients = () => {
         const allIngredientWrappers = [...this.ingredientConatiner.current.childNodes];
         let ingredientsObject = allIngredientWrappers.map((node) => {
-            return {ingredient: node.childNodes[0].value, amount: node.childNodes[1].value}
-        });
-
+            const ingredient = node.childNodes[0].value;
+            const amount = node.childNodes[1].value;
+            return {ingredient, amount}
+        })
+        .filter(ingredientObject => (ingredientObject.ingredient.trim() && ingredientObject.amount.trim()))
+        
         this.props.getIngredients(ingredientsObject);
     }
 
@@ -65,6 +65,11 @@ export default class AddIngredients extends Component {
             this.setState({ingredients: tmpState})
         }
     }
+
+    submit = (e) => {
+        this.props.submit(e);
+    }
+
     render() {
         let ingredientComponents = [];
         
@@ -95,7 +100,7 @@ export default class AddIngredients extends Component {
                             className="add-recipe" 
                             id="servingsNext" 
                             type="submit"
-                            onClick={this.props.submit}>Submit
+                            onClick={this.submit}>Submit
                         </button>
                     </div>
                 </div>

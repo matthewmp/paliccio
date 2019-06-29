@@ -44,7 +44,7 @@ export default class AddEditModal extends Component {
     }
 
     getIngredients = (ingredients) => {
-        this.setState({ingredients: ingredients})
+        this.setState({ingredients: ingredients});
     }
 
     handleRemoveIngredient = (e) => {
