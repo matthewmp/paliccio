@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ChefInfo from './ChefInfo_Vote';
 import IngredientsInfo from './IngredientsInfo';
 import InstructionsInfo from './InstructionsInfo';
 
 import './recipe-modal.css';
 
-export default class RecipeModal extends Component {
-
-  render() {
+const RecipeModal = (props) => {
     return (
       <div className="recipe-modal">
-        <div className="xClose" onClick={this.props.toggleModal}>&times;</div>
+        <div className="xClose" onClick={props.toggleModal}>&times;</div>
         <div className="recipe-modal-header container">
           <div className="recipe-modal-header row">
             
@@ -72,5 +70,6 @@ export default class RecipeModal extends Component {
         </div>
       </div>
     )
-  }
 }
+
+export default RecipeModal;

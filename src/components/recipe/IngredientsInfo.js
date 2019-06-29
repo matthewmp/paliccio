@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Ingredient from './Ingredient';
 
 
-export default class IngredientsInfo extends Component {
-    render() {
+const IngredientsInfo = () => {
         // Create fake ingredient info for testing
         let ingredients = [];
         for(let i = 0; i < 7; i++){
@@ -19,5 +18,6 @@ export default class IngredientsInfo extends Component {
                 </div>
             </div>
         )
-    }
 }
+
+export default IngredientsInfo;

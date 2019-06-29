@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import HambugerMenu from './HamburgerMenu';
 
-export default class Header extends Component {
-  render() {
+const Header = () => {
     return (
-      
         <header>
           <div className="row valign-wrapper header-wrapper">
             <div className="col s4">
@@ -18,12 +16,7 @@ export default class Header extends Component {
             </div>
           </div>
         </header>
-      
     )
-  }
 }
 
-
-
-
-
+export default Header;

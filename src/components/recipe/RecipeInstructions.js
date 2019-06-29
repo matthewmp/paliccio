@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class RecipeInstructions extends Component {
-    render() {
+const RecipeInstructions = (props) => {
         return (
             <div className="instruction-wrapper">
-                <span className="instruction-list-number">{this.props.listNumber}</span>
-                <span className="instruction-list-item">{this.props.instructionInfo}</span>
+                <span className="instruction-list-number">{props.listNumber}</span>
+                <span className="instruction-list-item">{props.instructionInfo}</span>
             </div>
         )
-    }
 }
+
+export default RecipeInstructions;

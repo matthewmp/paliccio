@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class ChefInfo_Vote extends Component {
-    render() {
+const ChefInfo_Vote = () => {
         return (
             <div className="chef-info container">
                 <div className="chef-info-wrapper row">
@@ -15,5 +14,6 @@ export default class ChefInfo_Vote extends Component {
                 </div>
             </div>
         )
-    }
 }
+
+export default ChefInfo_Vote;

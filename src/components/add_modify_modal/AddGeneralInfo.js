@@ -16,7 +16,6 @@ export default class AddGeneralInfo extends Component {
             this.setState({formError: ""})
             this.props.transition(e);
         } 
-
         else {
             this.setState({formError: "Please fill out all fields."})
         }

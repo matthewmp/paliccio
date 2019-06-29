@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import RecipeInstructions from './RecipeInstructions';
 
-export default class InstructionsInfo extends Component {
-    render() {
+const InstructionsInfo = () => {
         // Create fake instructions info for testing
         let instructions = [];
         for(let i = 0; i < 7; i++){
@@ -19,5 +18,6 @@ export default class InstructionsInfo extends Component {
                 </div>
             </div>
         )
-    }
 }
+
+export default InstructionsInfo;
