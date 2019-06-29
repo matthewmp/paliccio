@@ -6,12 +6,14 @@ import Footer from "./footer/Footer";
 import Landing from "./landingPage/Landing";
 
 import RecipeModal from './recipe/RecipeModal';
+import AddEditModal from './add_modify_modal/AddEditModal';
 
 import './app.css';
 
 class App extends Component {
   state = {
-    showModal: false
+    showModal: false,
+    showAddRecipe: false
   }
 
   toggleModal = (e) => {
@@ -20,16 +22,24 @@ class App extends Component {
     })
   }
 
+  toggleAddRecipeModal = (e) => {
+    this.setState({
+      showAddRecipe: !this.state.showAddRecipe
+    })
+  }
+
   render() {
     let recipeModal = this.state.showModal ? <RecipeModal toggleModal={this.toggleModal}/> : '';
+    let addRecipeModal = this.state.showAddRecipe ? <AddEditModal showHide={this.toggleAddRecipeModal}/> : '';
     return (
       <BrowserRouter>
         <div className="App">
           <Header />
           <Switch>
-            <Route exact path='/' render={() => <Landing  toggleModal={this.toggleModal} />}  />
+            <Route exact path='/' render={() => <Landing  toggleModal={this.toggleModal} toggleAddRecipeModal={this.toggleAddRecipeModal} />}  />
           </Switch>
           {recipeModal}
+          {addRecipeModal}
           <Footer />
         </div>
       </BrowserRouter>

@@ -8,7 +8,7 @@ export default class Landing extends Component {
     render() {
         return (
         <div>
-            <SearchForm />
+            <SearchForm toggleAddRecipeModal={this.props.toggleAddRecipeModal} />
             <div className="new-recipe-header">
                 Recently Added Recipes
             </div>

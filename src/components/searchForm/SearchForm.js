@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './searchForm.scss';
+
 export default class SearchForm extends Component {
     constructor(props){
         super(props);
@@ -35,6 +37,10 @@ export default class SearchForm extends Component {
                     <img src="./images/magnify_glass.svg" alt=""/>
                 </button>
             </form>
+            <div className="btn-add-recipe-wrapper" onClick={this.props.toggleAddRecipeModal}>
+                <img src="./images/add-btn.svg" alt=""/>
+                <p className="add-btn-text">Add New Recipe</p>
+            </div>
         </div>
         )
   }
