@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ingredient from './Ingredient';
+import uuidv4 from 'uuid/v4';
 import './addEditModal.scss';
 
 export default class AddIngredients extends Component {
@@ -34,8 +35,8 @@ export default class AddIngredients extends Component {
             this.setState({
                 ingredients: this.state.ingredients.concat(
                     <Ingredient 
-                        key={this.state.ingredients.length + 1}
-                        dataId={this.state.ingredients.length + 1}
+                        key={uuidv4()}
+                        dataId={uuidv4()}
                         add={this.addIngredient}
                         remove={this.removeIngredient}
                         className = {this.state.ingredients.length + 1}
@@ -58,10 +59,12 @@ export default class AddIngredients extends Component {
     }
 
     removeIngredient = (e) => {
-        var id = parseInt(e.target.parentNode.dataset.id);
+        var id = e.target.parentNode.dataset.id;
         if(this.state.ingredients.length > 1){
             let tmpState = this.state.ingredients;
-            tmpState.splice((id-1), 1);
+            let index = tmpState.map(item => item.props.dataId).indexOf(id);
+            console.log(index)
+            tmpState.splice(index, 1);
             this.setState({ingredients: tmpState})
         }
     }
@@ -71,6 +74,7 @@ export default class AddIngredients extends Component {
     }
 
     render() {
+        console.log(this.state)
         let ingredientComponents = [];
         
         for(let i = 0; i < this.state.ingredients.length; i++){
