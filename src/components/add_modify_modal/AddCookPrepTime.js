@@ -8,7 +8,7 @@ export default class AddCookPrepTime extends Component {
     }
 
     state = {
-        formError: ''
+        formError: '',
     }
 
     handleTransition = (e) => {
@@ -26,6 +26,13 @@ export default class AddCookPrepTime extends Component {
         let tabIndex = this.props.currentTransition === "-200" ? "0" : "-1";
         let formError = this.state.formError;
 
+        let cookTimeMinHighLight = this.props.cookTimeMinHrs === 'mins' ? 'highlight' : null;
+        let cookTimeHrsHighLight = this.props.cookTimeMinHrs === 'hours' ? 'highlight' : null;
+
+        let prepTimeMinHighLight = this.props.prepTimeMinHrs === 'mins' ? 'highlight' : null;
+        let prepTimeHrsHighLight = this.props.prepTimeMinHrs === 'hours' ? 'highlight' : null;
+        
+
         return (
             <section className="add-edit-recipe-view cook-prep-info">
             <div className="add-edit-recipe-label">Cook / Prep Time</div>
@@ -39,8 +46,13 @@ export default class AddCookPrepTime extends Component {
                         ref={this.prepTime}
                         required
                     />
-
-                    <input className="add-edit-recipe-input" 
+                    
+                    <ul>
+                        <li className={prepTimeMinHighLight} onClick={this.props.togglePrepTimeMinHrs}>Minutes</li>
+                        <li className={prepTimeHrsHighLight} onClick={this.props.togglePrepTimeMinHrs}>Hours</li>
+                    </ul>
+                    
+                    <input className="add-edit-recipe-input"
                         tabIndex={tabIndex}
                         type="text"
                         placeholder="ESTIMATED COOK TIME"
@@ -49,6 +61,11 @@ export default class AddCookPrepTime extends Component {
                         ref={this.cookTime}
                         required
                     />
+
+                    <ul>
+                        <li className={cookTimeMinHighLight} onClick={this.props.toggleCookTimeMinHrs}>Minutes</li>
+                        <li className={cookTimeHrsHighLight} onClick={this.props.toggleCookTimeMinHrs}>Hours</li>
+                    </ul>
                 </div>
                 <div className="add-recipe-btn-wrapper">
                     <button

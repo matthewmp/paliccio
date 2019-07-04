@@ -14,6 +14,8 @@ export default class AddEditModal extends Component {
         servings: '',
         cookTime: '',
         prepTime: '',
+        cookTimeMinHrs: 'mins',
+        prepTimeMinHrs: 'mins',
         ingredients: [],
         transition: "0"
 
@@ -37,6 +39,22 @@ export default class AddEditModal extends Component {
 
     handlePrepTimeChange = (e) => {
         this.setState({prepTime: e.target.value})
+    }
+
+    toggleCookTimeMinHrs = () => {
+        if(this.state.cookTimeMinHrs === 'mins'){
+            this.setState({cookTimeMinHrs: 'hours'})
+        } else {
+            this.setState({cookTimeMinHrs: 'mins'})
+        }
+    }
+
+    togglePrepTimeMinHrs = () => {
+        if(this.state.prepTimeMinHrs === 'mins'){
+            this.setState({prepTimeMinHrs: 'hours'})
+        } else {
+            this.setState({prepTimeMinHrs: 'mins'})
+        }
     }
 
     handleCookTimeChange = (e) => {
@@ -96,6 +114,10 @@ export default class AddEditModal extends Component {
                             prepTimeVal={this.state.prepTime}
                             cookTimeVal={this.state.cookTime}
                             currentTransition={this.state.transition}
+                            cookTimeMinHrs={this.state.cookTimeMinHrs}
+                            prepTimeMinHrs={this.state.prepTimeMinHrs}
+                            toggleCookTimeMinHrs={this.toggleCookTimeMinHrs}
+                            togglePrepTimeMinHrs={this.togglePrepTimeMinHrs}
                             transition={this.transition}/>
                         
                         <AddIngredients
