@@ -10,8 +10,7 @@ export default class AddIngredients extends Component {
     }
 
     state = {
-        ingredients: [],
-        length: 0
+        ingredients: []
     }
 
     componentDidMount(){
@@ -49,9 +48,10 @@ export default class AddIngredients extends Component {
     collectAllIngredients = () => {
         const allIngredientWrappers = [...this.ingredientConatiner.current.childNodes];
         let ingredientsObject = allIngredientWrappers.map((node) => {
+
             const ingredient = node.childNodes[0].value;
             const amount = node.childNodes[1].value;
-            return {ingredient, amount}
+            return {ingredient, amount, id: node.dataset.id}
         })
         .filter(ingredientObject => (ingredientObject.ingredient.trim() && ingredientObject.amount.trim()))
         
@@ -63,10 +63,11 @@ export default class AddIngredients extends Component {
         if(this.state.ingredients.length > 1){
             let tmpState = this.state.ingredients;
             let index = tmpState.map(item => item.props.dataId).indexOf(id);
-            console.log(index)
             tmpState.splice(index, 1);
-            this.setState({ingredients: tmpState})
+            this.setState({ingredients: tmpState});
+            this.props.handleRemoveIngredient(id);
         }
+        
     }
 
     submit = (e) => {
@@ -74,20 +75,12 @@ export default class AddIngredients extends Component {
     }
 
     render() {
-        console.log(this.state)
-        let ingredientComponents = [];
-        
-        for(let i = 0; i < this.state.ingredients.length; i++){
-            ingredientComponents.push(this.state.ingredients[i]);
-        }
-        
-        
         return (
             <section className="add-edit-recipe-view add-ingredients">
                 <div className="add-edit-recipe-label">Add Ingredients</div>
                 <div className="add-recipe-inputs-wrapper">
                     <div className="ingredient-component-container" ref={this.ingredientConatiner} onChange={this.collectAllIngredients}>
-                        {ingredientComponents}
+                        {this.state.ingredients}
                     </div>
                     
                     <div className="add-recipe-btn-wrapper">
