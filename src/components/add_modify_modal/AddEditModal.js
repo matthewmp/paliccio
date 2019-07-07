@@ -12,10 +12,14 @@ export default class AddEditModal extends Component {
         description: '',
         calories: '',
         servings: '',
-        cookTime: '',
-        prepTime: '',
-        cookTimeMinHrs: 'mins',
-        prepTimeMinHrs: 'mins',
+        cookTime1: '',
+        prepTime1: '',
+        cookTime2: '',
+        prepTime2: '',
+        cookTimeMinHrs1: 'mins',
+        prepTimeMinHrs1: 'mins',
+        cookTimeMinHrs2: 'mins',
+        prepTimeMinHrs2: 'mins',
         ingredients: [],
         transition: "0"
 
@@ -37,28 +41,54 @@ export default class AddEditModal extends Component {
         this.setState({servings: e.target.value})
     }
 
-    handlePrepTimeChange = (e) => {
-        this.setState({prepTime: e.target.value})
+    handlePrepTimeChange1 = (e) => {
+        this.setState({prepTime1: e.target.value})
     }
 
-    toggleCookTimeMinHrs = () => {
-        if(this.state.cookTimeMinHrs === 'mins'){
-            this.setState({cookTimeMinHrs: 'hours'})
+    handleCookTimeChange1 = (e) => {
+        this.setState({cookTime1: e.target.value})
+    }
+
+    handlePrepTimeChange2 = (e) => {
+        this.setState({prepTime2: e.target.value})
+    }
+
+    handleCookTimeChange2 = (e) => {
+        this.setState({cookTime2: e.target.value})
+    }
+
+    toggleCookTimeMinHrs1 = () => {
+        if(this.state.cookTimeMinHrs1 === 'mins'){
+            this.setState({cookTimeMinHrs1: 'hours'})
         } else {
-            this.setState({cookTimeMinHrs: 'mins'})
+            this.setState({cookTimeMinHrs1: 'mins'})
         }
     }
 
-    togglePrepTimeMinHrs = () => {
-        if(this.state.prepTimeMinHrs === 'mins'){
-            this.setState({prepTimeMinHrs: 'hours'})
+    toggleCookTimeMinHrs2 = () => {
+        if(this.state.cookTimeMinHrs2 === 'mins'){
+            this.setState({cookTimeMinHrs2: 'hours'})
         } else {
-            this.setState({prepTimeMinHrs: 'mins'})
+            this.setState({cookTimeMinHrs2: 'mins'})
         }
     }
 
-    handleCookTimeChange = (e) => {
-        this.setState({cookTime: e.target.value})
+    togglePrepTimeMinHrs1 = () => {
+        console.log('Toggle Pre 1');
+        if(this.state.prepTimeMinHrs1 === 'mins'){
+            this.setState({prepTimeMinHrs1: 'hours'})
+        } else {
+            this.setState({prepTimeMinHrs1: 'mins'})
+        }
+    }
+
+    togglePrepTimeMinHrs2 = () => {
+        console.log('Toggle Pre 2');
+        if(this.state.prepTimeMinHrs2 === 'mins'){
+            this.setState({prepTimeMinHrs2: 'hours'})
+        } else {
+            this.setState({prepTimeMinHrs2: 'mins'})
+        }
     }
 
     getIngredients = (ingredients) => {
@@ -109,15 +139,23 @@ export default class AddEditModal extends Component {
                             transition={this.transition}/>
 
                         <AddCookPrepTime
-                            handlePrepTimeChange={this.handlePrepTimeChange}
-                            handleCookTimeChange={this.handleCookTimeChange}
-                            prepTimeVal={this.state.prepTime}
-                            cookTimeVal={this.state.cookTime}
+                            handlePrepTimeChange1={this.handlePrepTimeChange1}
+                            handleCookTimeChange1={this.handleCookTimeChange1}
+                            handlePrepTimeChange2={this.handlePrepTimeChange2}
+                            handleCookTimeChange2={this.handleCookTimeChange2}
+                            prepTimeVal1={this.state.prepTime1}
+                            cookTimeVal1={this.state.cookTime1}
+                            prepTimeVal2={this.state.prepTime2}
+                            cookTimeVal2={this.state.cookTime2}
                             currentTransition={this.state.transition}
-                            cookTimeMinHrs={this.state.cookTimeMinHrs}
-                            prepTimeMinHrs={this.state.prepTimeMinHrs}
-                            toggleCookTimeMinHrs={this.toggleCookTimeMinHrs}
-                            togglePrepTimeMinHrs={this.togglePrepTimeMinHrs}
+                            cookTimeMinHrs1={this.state.cookTimeMinHrs1}
+                            prepTimeMinHrs1={this.state.prepTimeMinHrs1}
+                            cookTimeMinHrs2={this.state.cookTimeMinHrs2}
+                            prepTimeMinHrs2={this.state.prepTimeMinHrs2}
+                            toggleCookTimeMinHrs1={this.toggleCookTimeMinHrs1}
+                            togglePrepTimeMinHrs1={this.togglePrepTimeMinHrs1}
+                            toggleCookTimeMinHrs2={this.toggleCookTimeMinHrs2}
+                            togglePrepTimeMinHrs2={this.togglePrepTimeMinHrs2}
                             transition={this.transition}/>
                         
                         <AddIngredients

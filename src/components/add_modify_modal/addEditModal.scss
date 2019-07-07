@@ -64,7 +64,7 @@ section.add-edit-recipe-view {
         color: $white;
     }
 
-    .add-recipe-inputs-wrapper {
+    .add-recipe-inputs-wrapper {    
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -116,6 +116,29 @@ section.add-edit-recipe-view {
             background: #9E2252;
         }
 
+        .cook-time-wrapper, .prep-time-wrapper{
+            display: flex;
+            justify-content: center;
+        }
+
+        .cook-time-wrapper{
+            margin-bottom: 50px;
+        }
+
+        .cook-time-wrapper input, .prep-time-wrapper input{
+            width: 50% !important;
+            min-width: 50px;
+            max-width: 100px;
+            margin: 10px 0 0 10px !important;
+        }
+
+        .prep-time-wrapper ul, .cook-time-wrapper ul {
+            margin: 10px 0 0 10px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         
 
         /* Add ingredients */
@@ -153,7 +176,7 @@ section.add-edit-recipe-view {
     button.add-recipe {
         border-style: none;
         font-size: 2.5rem;
-        margin: 10px 0 0 0;
+        margin: 20px 0 0 0;
         background: transparent;
         color: #fff;
         font-family: 'Poppins';
@@ -161,18 +184,11 @@ section.add-edit-recipe-view {
         cursor: pointer;
     }
     .add-recipe-btn-wrapper {
+        position: relative;
         display: flex;
         width: 50%;
         margin: auto;
         justify-content: space-between;
-            .form-error{
-                color: #fff;
-                font-size: 1.2rem;
-                min-height: 30px;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-            }
     }
     /* First "Next" button in Add/Edit recipe modal */
     #add-recipe-btn-prime {
@@ -182,6 +198,52 @@ section.add-edit-recipe-view {
     
 }
 
+/* media query */
+@media only screen and (max-width: 650px){
+    .add-edit-modal-wrapper {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
+        z-index: 1000;
+    }
 
+    .add-recipe-inputs-wrapper input, .add-recipe-inputs-wrapper textarea {
+        width: 80% !important;
+    }
 
+    section.add-edit-recipe-view #add-recipe-btn-prime{
+        width: 80% !important;
+    }
 
+    .add-recipe-btn-wrapper {
+        width: 80% !important;
+            button{
+                font-size: 1.5rem !important;
+            }
+    }
+
+    button#generalNext {
+        font-size: 1.5rem;
+    }
+
+    section.add-edit-recipe-view .add-recipe-inputs-wrapper .add-ingredient-wrapper button.btn-add-ingredient{
+        width: 30px;
+        height: 30px;
+        line-height: 20px;
+        margin: auto 5px;
+    }
+}
+
+.form-error{
+    top: -10px;
+    color: #fff;
+    font-size: 1.2rem;
+    min-height: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+section{
+    overflow: hidden;
+}
