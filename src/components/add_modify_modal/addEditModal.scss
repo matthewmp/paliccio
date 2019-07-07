@@ -17,13 +17,19 @@ $pinkPhase: rgba(239,0,91, 0.85);
     .add-edit-modal-wrapper {
         position: relative;
         width: 80%;
+        max-width: 800px;
         height: 80vh;
         background: $pinkPhase;
         border-radius: 42px;
 
         #add-edit-recipe-form{
+            display: flex;
             white-space: nowrap;
             overflow: hidden;
+        }
+
+        #add-edit-recipe-form section{
+            flex-shrink: 0;
         }
     }
 
@@ -61,16 +67,19 @@ section.add-edit-recipe-view {
     .add-recipe-inputs-wrapper {
         display: flex;
         flex-direction: column;
-        width: 50%;
+        justify-content: center;
+        width: 100%;
         margin: auto;
         text-align: right;
 
-        input.add-edit-recipe-input {
+        input, textarea {
+            width: 50%;
+            margin: 0 auto 10px auto;
             min-height: 50px;
             text-align: center;
-            font-size: 3rem !important;
+            font-size: 1.5rem !important;
             color: $hotPink;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
             font-family: 'Poppins';
             border-radius: 4px !important;
         }
@@ -91,13 +100,52 @@ section.add-edit-recipe-view {
             padding: 5px 15px;
         }
 
+        ul {
+            margin: 0 auto 20px;
+            color: #fff;
+        }
+
+        li {
+            padding: 2px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .highlight{
+            background: #9E2252;
+        }
+
+        
+
         /* Add ingredients */
         .add-ingredient-wrapper {
             display: flex;
+            justify-content: center;
 
             .sing-ingredient-container{
                 display: flex;
                 width: 100%;
+            }
+
+            input {
+                max-width: 200px;
+                margin: 0 10px 0 0 !important;
+            }
+
+            button.btn-add-ingredient {
+                border-style: none;
+                width: 40px;
+                height: 40px;
+                margin: 0 5px 0 0;
+                text-align: center;
+                line-height: 30px;
+                font-size: 2rem;
+                border-radius: 50%;
+                cursor: pointer;
+                background: transparent;
+                color: #fff;
+                border: 3px solid #fff;
             }
         }
     }
@@ -129,13 +177,11 @@ section.add-edit-recipe-view {
     /* First "Next" button in Add/Edit recipe modal */
     #add-recipe-btn-prime {
         flex-direction: row-reverse;
-        width: 100%;
+        width: 50%;
     }
     
 }
 
-.highlight{
-    background: yellow;
-}
+
 
 
