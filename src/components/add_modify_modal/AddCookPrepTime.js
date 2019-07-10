@@ -3,16 +3,19 @@ import React, { Component } from 'react'
 export default class AddCookPrepTime extends Component {
     constructor(props){
         super(props);
-        this.cookTime = React.createRef();
-        this.prepTime = React.createRef();
+        this.cookTime1 = React.createRef();
+        this.prepTime1 = React.createRef();
+        this.cookTime2 = React.createRef();
+        this.prepTime2 = React.createRef();
     }
 
     state = {
-        formError: '',
+        formError: ''
     }
 
     handleTransition = (e) => {
-        if((this.cookTime.current.value.trim() !== "") && (this.prepTime.current.value.trim() !== "")){
+        if((this.cookTime1.current.value.trim() > 0) && (this.prepTime1.current.value.trim() > 0) 
+        && (this.cookTime2.current.value.trim() > 0) && (this.prepTime2.current.value.trim()) > 0){
             this.setState({formError: ""})
             this.props.transition(e);
         } 
@@ -26,46 +29,83 @@ export default class AddCookPrepTime extends Component {
         let tabIndex = this.props.currentTransition === "-200" ? "0" : "-1";
         let formError = this.state.formError;
 
-        let cookTimeMinHighLight = this.props.cookTimeMinHrs === 'mins' ? 'highlight' : null;
-        let cookTimeHrsHighLight = this.props.cookTimeMinHrs === 'hours' ? 'highlight' : null;
+        let cookTimeMinHighLight = this.props.cookTimeMinHrs1 === 'mins' ? 'highlight' : null;
+        let cookTimeHrsHighLight = this.props.cookTimeMinHrs1 === 'hours' ? 'highlight' : null;
+        let cookTimeMinHighLight2 = this.props.cookTimeMinHrs2 === 'mins' ? 'highlight' : null;
+        let cookTimeHrsHighLight2 = this.props.cookTimeMinHrs2 === 'hours' ? 'highlight' : null;
 
-        let prepTimeMinHighLight = this.props.prepTimeMinHrs === 'mins' ? 'highlight' : null;
-        let prepTimeHrsHighLight = this.props.prepTimeMinHrs === 'hours' ? 'highlight' : null;
-        
+        let prepTimeMinHighLight = this.props.prepTimeMinHrs1 === 'mins' ? 'highlight' : null;
+        let prepTimeHrsHighLight = this.props.prepTimeMinHrs1 === 'hours' ? 'highlight' : null;
+        let prepTimeMinHighLight2 = this.props.prepTimeMinHrs2 === 'mins' ? 'highlight' : null;
+        let prepTimeHrsHighLight2 = this.props.prepTimeMinHrs2 === 'hours' ? 'highlight' : null;
 
         return (
             <section className="add-edit-recipe-view cook-prep-info">
             <div className="add-edit-recipe-label">Cook / Prep Time</div>
                 <div className="add-recipe-inputs-wrapper">
-                    <input className="add-edit-recipe-input" 
-                        tabIndex={tabIndex}
-                        type="text" 
-                        placeholder="ESTIMATED PREP TIME" 
-                        onChange={this.props.handlePrepTimeChange} 
-                        value={this.props.caloriesVal}
-                        ref={this.prepTime}
-                        required
-                    />
-                    
-                    <ul>
-                        <li className={prepTimeMinHighLight} onClick={this.props.togglePrepTimeMinHrs}>Minutes</li>
-                        <li className={prepTimeHrsHighLight} onClick={this.props.togglePrepTimeMinHrs}>Hours</li>
-                    </ul>
-                    
-                    <input className="add-edit-recipe-input"
-                        tabIndex={tabIndex}
-                        type="text"
-                        placeholder="ESTIMATED COOK TIME"
-                        onChange={this.props.handleCookTimeChange}
-                        value={this.props.servingsVal}
-                        ref={this.cookTime}
-                        required
-                    />
+                    <div className="prep-time-wrapper">
+                        <input className="add-edit-recipe-input" 
+                            tabIndex={tabIndex}
+                            type="text" 
+                            placeholder="PREP TIME" 
+                            onChange={this.props.handlePrepTimeChange1} 
+                            value={this.props.prepTimeVal1}
+                            ref={this.prepTime1}
+                            required
+                        />
+                        
+                        <ul>
+                            <li className={prepTimeMinHighLight} onClick={this.props.togglePrepTimeMinHrs1}>Minutes</li>
+                            <li className={prepTimeHrsHighLight} onClick={this.props.togglePrepTimeMinHrs1}>Hours</li>
+                        </ul>
 
-                    <ul>
-                        <li className={cookTimeMinHighLight} onClick={this.props.toggleCookTimeMinHrs}>Minutes</li>
-                        <li className={cookTimeHrsHighLight} onClick={this.props.toggleCookTimeMinHrs}>Hours</li>
-                    </ul>
+                        <input className="add-edit-recipe-input" 
+                            tabIndex={tabIndex}
+                            type="text" 
+                            placeholder="PREP TIME" 
+                            onChange={this.props.handlePrepTimeChange2} 
+                            value={this.props.prepTimeVal2}
+                            ref={this.prepTime2}
+                            required
+                        />
+                        
+                        <ul>
+                            <li className={prepTimeMinHighLight2} onClick={this.props.togglePrepTimeMinHrs2}>Minutes</li>
+                            <li className={prepTimeHrsHighLight2} onClick={this.props.togglePrepTimeMinHrs2}>Hours</li>
+                        </ul>
+                    </div>
+                    
+                    <div className="cook-time-wrapper">
+                        <input className="add-edit-recipe-input"
+                            tabIndex={tabIndex}
+                            type="text"
+                            placeholder="COOK TIME"
+                            onChange={this.props.handleCookTimeChange1}
+                            value={this.props.cookTimeVal1}
+                            ref={this.cookTime1}
+                            required
+                        />
+
+                        <ul>
+                            <li className={cookTimeMinHighLight} onClick={this.props.toggleCookTimeMinHrs1}>Minutes</li>
+                            <li className={cookTimeHrsHighLight} onClick={this.props.toggleCookTimeMinHrs1}>Hours</li>
+                        </ul>
+
+                        <input className="add-edit-recipe-input"
+                            tabIndex={tabIndex}
+                            type="text"
+                            placeholder="COOK TIME"
+                            onChange={this.props.handleCookTimeChange2}
+                            value={this.props.cookTimeVal2}
+                            ref={this.cookTime2}
+                            required
+                        />
+
+                        <ul>
+                            <li className={cookTimeMinHighLight2} onClick={this.props.toggleCookTimeMinHrs2}>Minutes</li>
+                            <li className={cookTimeHrsHighLight2} onClick={this.props.toggleCookTimeMinHrs2}>Hours</li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="add-recipe-btn-wrapper">
                     <button

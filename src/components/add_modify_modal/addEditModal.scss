@@ -17,13 +17,19 @@ $pinkPhase: rgba(239,0,91, 0.85);
     .add-edit-modal-wrapper {
         position: relative;
         width: 80%;
+        max-width: 800px;
         height: 80vh;
         background: $pinkPhase;
         border-radius: 42px;
 
         #add-edit-recipe-form{
+            display: flex;
             white-space: nowrap;
             overflow: hidden;
+        }
+
+        #add-edit-recipe-form section{
+            flex-shrink: 0;
         }
     }
 
@@ -52,25 +58,28 @@ section.add-edit-recipe-view {
 
     .add-edit-recipe-label {
         text-align: center;
-        margin: 5% auto 10px auto;
+        margin: 10rem auto 10px auto;
         font-size: 4.8rem;
         font-family: 'Seaweed Script';
         color: $white;
     }
 
-    .add-recipe-inputs-wrapper {
+    .add-recipe-inputs-wrapper {    
         display: flex;
         flex-direction: column;
-        width: 50%;
+        justify-content: center;
+        width: 100%;
         margin: auto;
         text-align: right;
 
-        input.add-edit-recipe-input {
+        input, textarea {
+            width: 50%;
+            margin: 0 auto 10px auto;
             min-height: 50px;
             text-align: center;
-            font-size: 3rem !important;
+            font-size: 1.5rem !important;
             color: $hotPink;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
             font-family: 'Poppins';
             border-radius: 4px !important;
         }
@@ -91,13 +100,75 @@ section.add-edit-recipe-view {
             padding: 5px 15px;
         }
 
+        ul {
+            margin: 0 auto 20px;
+            color: #fff;
+        }
+
+        li {
+            padding: 2px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .highlight{
+            background: #9E2252;
+        }
+
+        .cook-time-wrapper, .prep-time-wrapper{
+            display: flex;
+            justify-content: center;
+        }
+
+        .cook-time-wrapper{
+            margin-bottom: 50px;
+        }
+
+        .cook-time-wrapper input, .prep-time-wrapper input{
+            width: 50% !important;
+            min-width: 50px;
+            max-width: 100px;
+            margin: 10px 0 0 10px !important;
+        }
+
+        .prep-time-wrapper ul, .cook-time-wrapper ul {
+            margin: 10px 0 0 10px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        
+
         /* Add ingredients */
         .add-ingredient-wrapper {
             display: flex;
+            justify-content: center;
 
             .sing-ingredient-container{
                 display: flex;
                 width: 100%;
+            }
+
+            input {
+                max-width: 200px;
+                margin: 0 10px 0 0 !important;
+            }
+
+            button.btn-add-ingredient {
+                border-style: none;
+                width: 40px;
+                height: 40px;
+                margin: 0 5px 0 0;
+                text-align: center;
+                line-height: 30px;
+                font-size: 2rem;
+                border-radius: 50%;
+                cursor: pointer;
+                background: transparent;
+                color: #fff;
+                border: 3px solid #fff;
             }
         }
     }
@@ -105,7 +176,7 @@ section.add-edit-recipe-view {
     button.add-recipe {
         border-style: none;
         font-size: 2.5rem;
-        margin: 10px 0 0 0;
+        margin: 20px 0 0 0;
         background: transparent;
         color: #fff;
         font-family: 'Poppins';
@@ -113,24 +184,17 @@ section.add-edit-recipe-view {
         cursor: pointer;
     }
     .add-recipe-btn-wrapper {
+        position: relative;
         display: flex;
         width: 50%;
         margin: auto;
         justify-content: space-between;
-            .form-error{
-                color: #fff;
-                font-size: 1.2rem;
-                min-height: 30px;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-            }
     }
 
     /* First "Next" button in Add/Edit recipe modal */
     #add-recipe-btn-prime {
         flex-direction: row-reverse;
-        width: 100%;
+        width: 50%;
     }
         
 }
@@ -139,8 +203,52 @@ section.add-edit-recipe-view.general-info{
     vertical-align: middle;
 }
 
-.highlight{
-    background: yellow;
+/* media query */
+@media only screen and (max-width: 650px){
+    .add-edit-modal-wrapper {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
+        z-index: 1000;
+    }
+
+    .add-recipe-inputs-wrapper input, .add-recipe-inputs-wrapper textarea {
+        width: 80% !important;
+    }
+
+    section.add-edit-recipe-view #add-recipe-btn-prime{
+        width: 80% !important;
+    }
+
+    .add-recipe-btn-wrapper {
+        width: 80% !important;
+            button{
+                font-size: 1.5rem !important;
+            }
+    }
+
+    button#generalNext {
+        font-size: 1.5rem;
+    }
+
+    section.add-edit-recipe-view .add-recipe-inputs-wrapper .add-ingredient-wrapper button.btn-add-ingredient{
+        width: 30px;
+        height: 30px;
+        line-height: 20px;
+        margin: auto 5px;
+    }
 }
 
+.form-error{
+    top: -10px;
+    color: #fff;
+    font-size: 1.2rem;
+    min-height: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
+section{
+    overflow: hidden;
+}

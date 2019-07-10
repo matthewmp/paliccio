@@ -51,6 +51,7 @@ export default class AddGeneralInfo extends Component {
                     </textarea>
                     
                     <div className="add-recipe-btn-wrapper" id="add-recipe-btn-prime">
+                    <p className="form-error">{formError}</p>
                         <button
                             tabIndex={tabIndex}
                             className="add-recipe" 
@@ -59,7 +60,6 @@ export default class AddGeneralInfo extends Component {
                             data-transition="-100" 
                             onClick={this.handleTransition.bind(this)}>Next
                         </button>    
-                        <p className="form-error">{formError}</p>
                     </div>
                     
                 </div>
