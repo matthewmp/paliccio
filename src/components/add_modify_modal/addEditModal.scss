@@ -126,12 +126,17 @@ section.add-edit-recipe-view {
                 transform: translateX(-50%);
             }
     }
+
     /* First "Next" button in Add/Edit recipe modal */
     #add-recipe-btn-prime {
         flex-direction: row-reverse;
         width: 100%;
     }
-    
+        
+}
+
+section.add-edit-recipe-view.general-info{
+    vertical-align: middle;
 }
 
 .highlight{
