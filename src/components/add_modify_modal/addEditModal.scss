@@ -19,6 +19,7 @@ $pinkPhase: rgba(239,0,91, 0.85);
         width: 80%;
         max-width: 800px;
         height: 80vh;
+        max-height: 600px;
         background: $pinkPhase;
         border-radius: 42px;
 
@@ -210,6 +211,10 @@ section.add-edit-recipe-view.general-info{
         height: 100% !important;
         border-radius: 0 !important;
         z-index: 1000;
+    }
+
+    .modal-label{
+        font-size: 3rem !important;
     }
 
     .add-recipe-inputs-wrapper input, .add-recipe-inputs-wrapper textarea {

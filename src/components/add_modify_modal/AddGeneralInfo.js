@@ -28,7 +28,7 @@ export default class AddGeneralInfo extends Component {
         let formError = this.state.formError;
         return (
             <section className="add-edit-recipe-view general-info">
-                <div className="add-edit-recipe-label">Recipe General Info</div>
+                <div className="add-edit-recipe-label modal-label">Recipe General Info</div>
                 <div className="add-recipe-inputs-wrapper">
                     <input className="add-edit-recipe-input" 
                         tabIndex={tabIndex}

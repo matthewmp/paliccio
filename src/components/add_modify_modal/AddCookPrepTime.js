@@ -41,7 +41,7 @@ export default class AddCookPrepTime extends Component {
 
         return (
             <section className="add-edit-recipe-view cook-prep-info">
-            <div className="add-edit-recipe-label">Cook / Prep Time</div>
+            <div className="add-edit-recipe-label modal-label">Cook / Prep Time</div>
                 <div className="add-recipe-inputs-wrapper">
                     <div className="prep-time-wrapper">
                         <input className="add-edit-recipe-input" 

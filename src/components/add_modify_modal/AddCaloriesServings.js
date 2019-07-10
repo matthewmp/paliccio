@@ -23,7 +23,7 @@ export default class AddCaloriesServings extends Component {
         const formError = this.state.formError;
         return (
             <section className="add-edit-recipe-view calories-servings-info">
-            <div className="add-edit-recipe-label">Calories / Servings</div>
+            <div className="add-edit-recipe-label modal-label">Calories / Servings</div>
                 <div className="add-recipe-inputs-wrapper">
                     <input className="add-edit-recipe-name" 
                         type="text" 

@@ -77,7 +77,7 @@ export default class AddIngredients extends Component {
     render() {
         return (
             <section className="add-edit-recipe-view add-ingredients">
-                <div className="add-edit-recipe-label">Add Ingredients</div>
+                <div className="add-edit-recipe-label modal-label">Add Ingredients</div>
                 <div className="add-recipe-inputs-wrapper">
                     <div className="ingredient-component-container" ref={this.ingredientConatiner} onChange={this.collectAllIngredients}>
                         {this.state.ingredients}
