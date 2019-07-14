@@ -96,8 +96,9 @@ export default class AddIngredients extends Component {
                             tabIndex="-1" 
                             className="add-recipe" 
                             id="servingsNext" 
-                            type="submit"
-                            onClick={this.submit}>Submit
+                            type="button"
+                            data-transition="-400"
+                            onClick={this.props.transition}>Next
                         </button>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import AddGeneralInfo from './AddGeneralInfo';
 import AddCaloriesServings from './AddCaloriesServings';
 import AddCookPrepTime from './AddCookPrepTime';
 import AddIngredients from './AddIngredients';
+import AddInstructions from './AddInstructions';
 import axios from 'axios';
 
 import './addEditModal.scss';
@@ -22,6 +23,7 @@ export default class AddEditModal extends Component {
         cookTime2: '',
         cookTimeMinHrs2: 'mins',
         ingredients: [],
+        instructions: [],
         transition: "0"
 
     }
@@ -101,6 +103,10 @@ export default class AddEditModal extends Component {
         this.setState({ingredients: newIngredientState})
     }
 
+    getInstructions(instructions){
+        this.setState({instructions});
+    }
+
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
@@ -113,6 +119,7 @@ export default class AddEditModal extends Component {
 
     transition = (e) => {
         const transitionAmount = e.target.dataset.transition;
+        
         const editRecipeViews = document.getElementsByClassName('add-edit-recipe-view');
         
         for(let i = 0; i < editRecipeViews.length; i++){
@@ -167,12 +174,18 @@ export default class AddEditModal extends Component {
                         <AddIngredients
                             handleAddIngredient={this.handleAddIngredient}
                             handleRemoveIngredient={this.handleRemoveIngredient}
-                            submit={this.handleFormSubmit}
                             getIngredients={this.getIngredients}
                             prepTimeVal={this.state.prepTime}
                             cookTimeVal={this.state.cookTime}
                             currentTransition={this.state.transition}
                             transition={this.transition}/>
+
+                        <AddInstructions 
+                            handleInstructions={this.handleInstructions}
+                            submit={this.handleFormSubmit}
+                            transition={this.transition}
+                            getInstructions={this.getInstructions}
+                        />
                     </form>
                         
                 </div>
