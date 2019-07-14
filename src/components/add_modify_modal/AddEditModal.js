@@ -3,6 +3,7 @@ import AddGeneralInfo from './AddGeneralInfo';
 import AddCaloriesServings from './AddCaloriesServings';
 import AddCookPrepTime from './AddCookPrepTime';
 import AddIngredients from './AddIngredients';
+import axios from 'axios';
 
 import './addEditModal.scss';
 
@@ -12,14 +13,14 @@ export default class AddEditModal extends Component {
         description: '',
         calories: '',
         servings: '',
-        cookTime1: '',
         prepTime1: '',
-        cookTime2: '',
-        prepTime2: '',
-        cookTimeMinHrs1: 'mins',
         prepTimeMinHrs1: 'mins',
-        cookTimeMinHrs2: 'mins',
+        prepTime2: '',
         prepTimeMinHrs2: 'mins',
+        cookTime1: '',
+        cookTimeMinHrs1: 'mins',
+        cookTime2: '',
+        cookTimeMinHrs2: 'mins',
         ingredients: [],
         transition: "0"
 
@@ -103,6 +104,11 @@ export default class AddEditModal extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
+        axios.post(`http://localhost/recipe-app/test.php`, this.state, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
     }
 
     transition = (e) => {
