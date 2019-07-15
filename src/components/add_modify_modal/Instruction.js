@@ -18,7 +18,7 @@ export default class Instruction extends React.Component{
 
 
     handleAddInstruction = () => {
-        if(this.instruction.current.value.trim() !== "" && this.amount.current.value !== ""){
+        if(this.instruction.current.value.trim() !== ""){
             this.props.add();
         }
     }

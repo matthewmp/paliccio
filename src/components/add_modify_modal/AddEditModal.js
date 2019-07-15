@@ -10,17 +10,17 @@ import './addEditModal.scss';
 
 export default class AddEditModal extends Component {
     state = {
-        name: '',
-        description: '',
-        calories: '',
-        servings: '',
-        prepTime1: '',
+        name: '2',
+        description: '2',
+        calories: '2',
+        servings: '2',
+        prepTime1: '2',
         prepTimeMinHrs1: 'mins',
-        prepTime2: '',
+        prepTime2: '2',
         prepTimeMinHrs2: 'mins',
-        cookTime1: '',
+        cookTime1: '2',
         cookTimeMinHrs1: 'mins',
-        cookTime2: '',
+        cookTime2: '2',
         cookTimeMinHrs2: 'mins',
         ingredients: [],
         instructions: [],
@@ -77,7 +77,6 @@ export default class AddEditModal extends Component {
     }
 
     togglePrepTimeMinHrs1 = () => {
-        console.log('Toggle Pre 1');
         if(this.state.prepTimeMinHrs1 === 'mins'){
             this.setState({prepTimeMinHrs1: 'hours'})
         } else {
@@ -103,9 +102,15 @@ export default class AddEditModal extends Component {
         this.setState({ingredients: newIngredientState})
     }
 
-    getInstructions(instructions){
-        this.setState({instructions});
+    getInstructions = (instructions) => {
+        console.log('GET INS: ', instructions)
+        this.setState({instructions: instructions});
     }
+
+    handleRemoveInstruction = (instructionID) => {
+        const newInstructionState = this.state.instructions.filter(instruction => instruction.id !== instructionID);
+        this.setState({instructions: newInstructionState})
+    }    
 
     handleFormSubmit = (e) => {
         e.preventDefault();
@@ -185,6 +190,7 @@ export default class AddEditModal extends Component {
                             submit={this.handleFormSubmit}
                             transition={this.transition}
                             getInstructions={this.getInstructions}
+                            handleRemoveInstruction={this.handleRemoveInstruction}
                         />
                     </form>
                         

@@ -22,6 +22,7 @@ export default class AddInstructions extends Component {
     inputsAreFilled = (instructionContainerElement) => {
         let areFilled = true;
         instructionContainerElement.forEach(container => {
+            console.log(container.childNodes[0])
             if(container.childNodes[0].value.trim() === "" || container.childNodes[0].value.trim() === ""){
                 areFilled = false;
             }
@@ -30,6 +31,7 @@ export default class AddInstructions extends Component {
     }
 
     addInstruction = (e) => {
+        console.log("Add: ", this.instructionContainer.current.childNodes)
         if(this.inputsAreFilled(this.instructionContainer.current.childNodes)){
             this.setState({
                 instructions: this.state.instructions.concat(
@@ -50,12 +52,13 @@ export default class AddInstructions extends Component {
         let instructionsObject = allInstructionsWrapper.map((node) => {
 
             const instruction = node.childNodes[0].value;
-            const amount = node.childNodes[1].value;
-            return {instruction, amount, id: node.dataset.id}
+            console.log('Instruction: ', instruction)
+            // const amount = node.childNodes[1].value;
+            return {instruction, id: node.dataset.id}
         })
-        .filter(instructionObject => (instructionObject.instruction.trim() && instructionObject.amount.trim()))
-        
-        this.props.getinstructions(instructionsObject);
+        .filter(instructionObject => (instructionObject.instruction.trim()))
+        console.log(instructionsObject)
+        this.props.getInstructions(instructionsObject);
     }
 
     removeInstruction = (e) => {
@@ -65,7 +68,7 @@ export default class AddInstructions extends Component {
             let index = tmpState.map(item => item.props.dataId).indexOf(id);
             tmpState.splice(index, 1);
             this.setState({instructions: tmpState});
-            this.props.handleremoveInstruction(id);
+            this.props.handleRemoveInstruction(id);
         }
         
     }
@@ -80,7 +83,7 @@ export default class AddInstructions extends Component {
                 <div className="add-edit-recipe-label modal-label">Add Instructions</div>
                 <div className="add-recipe-inputs-wrapper">
                     <div className="ingredient-component-container" ref={this.instructionContainer} onChange={this.collectAllInstructions}>
-                        {this.state.ingredients}
+                        {this.state.instructions}
                     </div>
                     
                     <div className="add-recipe-btn-wrapper">
