@@ -10,18 +10,15 @@ import './addEditModal.scss';
 
 export default class AddEditModal extends Component {
     state = {
-        name: '2',
-        description: '2',
-        calories: '2',
-        servings: '2',
-        prepTime1: '2',
-        prepTimeMinHrs1: 'mins',
-        prepTime2: '2',
-        prepTimeMinHrs2: 'mins',
-        cookTime1: '2',
-        cookTimeMinHrs1: 'mins',
-        cookTime2: '2',
-        cookTimeMinHrs2: 'mins',
+        user_key: '1234',
+        name: '',
+        description: '',
+        calories: '',
+        servings: '',
+        prepTime1: '',
+        prepTime2: '',
+        cookTime1: '',
+        cookTime2: '',
         ingredients: [],
         instructions: [],
         transition: "0"
@@ -60,39 +57,6 @@ export default class AddEditModal extends Component {
         this.setState({cookTime2: e.target.value})
     }
 
-    toggleCookTimeMinHrs1 = () => {
-        if(this.state.cookTimeMinHrs1 === 'mins'){
-            this.setState({cookTimeMinHrs1: 'hours'})
-        } else {
-            this.setState({cookTimeMinHrs1: 'mins'})
-        }
-    }
-
-    toggleCookTimeMinHrs2 = () => {
-        if(this.state.cookTimeMinHrs2 === 'mins'){
-            this.setState({cookTimeMinHrs2: 'hours'})
-        } else {
-            this.setState({cookTimeMinHrs2: 'mins'})
-        }
-    }
-
-    togglePrepTimeMinHrs1 = () => {
-        if(this.state.prepTimeMinHrs1 === 'mins'){
-            this.setState({prepTimeMinHrs1: 'hours'})
-        } else {
-            this.setState({prepTimeMinHrs1: 'mins'})
-        }
-    }
-
-    togglePrepTimeMinHrs2 = () => {
-        console.log('Toggle Pre 2');
-        if(this.state.prepTimeMinHrs2 === 'mins'){
-            this.setState({prepTimeMinHrs2: 'hours'})
-        } else {
-            this.setState({prepTimeMinHrs2: 'mins'})
-        }
-    }
-
     getIngredients = (ingredients) => {
         this.setState({ingredients: ingredients});
     }
@@ -115,7 +79,7 @@ export default class AddEditModal extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
-        axios.post(`http://localhost/recipe-app/test.php`, this.state, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+        axios.post(`http://localhost/recipe-app/test.php`, this.state, {headers: {'Data-Type': 'json'}})
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -166,14 +130,6 @@ export default class AddEditModal extends Component {
                             prepTimeVal2={this.state.prepTime2}
                             cookTimeVal2={this.state.cookTime2}
                             currentTransition={this.state.transition}
-                            cookTimeMinHrs1={this.state.cookTimeMinHrs1}
-                            prepTimeMinHrs1={this.state.prepTimeMinHrs1}
-                            cookTimeMinHrs2={this.state.cookTimeMinHrs2}
-                            prepTimeMinHrs2={this.state.prepTimeMinHrs2}
-                            toggleCookTimeMinHrs1={this.toggleCookTimeMinHrs1}
-                            togglePrepTimeMinHrs1={this.togglePrepTimeMinHrs1}
-                            toggleCookTimeMinHrs2={this.toggleCookTimeMinHrs2}
-                            togglePrepTimeMinHrs2={this.togglePrepTimeMinHrs2}
                             transition={this.transition}/>
                         
                         <AddIngredients

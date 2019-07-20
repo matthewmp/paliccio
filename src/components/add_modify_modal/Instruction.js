@@ -25,7 +25,7 @@ export default class Instruction extends React.Component{
 
     render(){
         return(
-            <div className="add-ingredient-wrapper" data-id={this.props.dataId}>
+            <div className="add-instruction-wrapper" data-id={this.props.dataId}>
                 <input 
                     tabIndex="-1" 
                     type="text" 

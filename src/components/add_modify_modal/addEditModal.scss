@@ -120,6 +120,13 @@ section.add-edit-recipe-view {
         .cook-time-wrapper, .prep-time-wrapper{
             display: flex;
             justify-content: center;
+
+            .mins-hours{
+                align-self: center;
+                color: #fff;
+                font-size: 1.2rem;
+                padding: 5px;
+            }
         }
 
         .cook-time-wrapper{
@@ -171,7 +178,37 @@ section.add-edit-recipe-view {
                 color: #fff;
                 border: 3px solid #fff;
             }
+
+            
         }
+
+        .add-instruction-wrapper {
+
+            .add-instruction-wrapper{
+                text-align: center;
+            }
+
+            .inp-instruction{
+                max-width: 80%;
+            }
+
+            button.btn-add-ingredient {
+                border-style: none;
+                width: 40px;
+                height: 40px;
+                margin: 0 5px 0 5px;
+                text-align: center;
+                line-height: 30px;
+                font-size: 2rem;
+                border-radius: 50%;
+                cursor: pointer;
+                background: transparent;
+                color: #fff;
+                border: 3px solid #fff;
+            }
+        }
+
+        
     }
 
     button.add-recipe {
@@ -230,6 +267,10 @@ section.add-edit-recipe-view.general-info{
             button{
                 font-size: 1.5rem !important;
             }
+    }
+
+    .inp-instruction{
+        max-width: 65% !important;
     }
 
     button#generalNext {

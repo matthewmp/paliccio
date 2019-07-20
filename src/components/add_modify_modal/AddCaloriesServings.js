@@ -15,7 +15,7 @@ export default class AddCaloriesServings extends Component {
         if(this.calories.current.value > 0 && this.servings.current.value > 0){
             this.props.transition(e);
         } else {
-            this.setState({formError: 'Please fill out all fields.'})
+            this.setState({formError: 'Please fill out all fields with # greater than 0'})
         }
     }
 
@@ -26,7 +26,9 @@ export default class AddCaloriesServings extends Component {
             <div className="add-edit-recipe-label modal-label">Calories / Servings</div>
                 <div className="add-recipe-inputs-wrapper">
                     <input className="add-edit-recipe-name" 
-                        type="text" 
+                        type="number"
+                        min="1"
+                        max="20000"
                         placeholder="CALORIES PER SERVING" 
                         onChange={this.props.handleCaloriesChange} 
                         value={this.props.caloriesVal}
@@ -34,7 +36,9 @@ export default class AddCaloriesServings extends Component {
                     />
 
                     <input 
-                        type="text"
+                        type="number"
+                        min="1"
+                        max="99"
                         placeholder="# OF SERVINGS"
                         onChange={this.props.handleServingsChange}
                         value={this.props.servingsVal}
