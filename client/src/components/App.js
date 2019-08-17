@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
@@ -35,9 +35,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Header />
-          <Switch>
-            <Route exact path='/' render={() => <Landing  toggleModal={this.toggleModal} toggleAddRecipeModal={this.toggleAddRecipeModal} />}  />
-          </Switch>
+          <Landing toggleModal={this.toggleModal} toggleAddRecipeModal={this.toggleAddRecipeModal}/>
           {recipeModal}
           {addRecipeModal}
           <Footer />

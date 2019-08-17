@@ -27,7 +27,7 @@ export default class AddGeneralInfo extends Component {
         let formError = this.state.formError;
         return (
             <section className="add-edit-recipe-view general-info">
-                <div className="add-edit-recipe-label">Recipe General Info</div>
+                <div className="add-edit-recipe-label modal-label">Recipe General Info</div>
                 <div className="add-recipe-inputs-wrapper">
                     <input className="add-edit-recipe-input" 
                         tabIndex={tabIndex}
@@ -50,6 +50,7 @@ export default class AddGeneralInfo extends Component {
                     </textarea>
                     
                     <div className="add-recipe-btn-wrapper" id="add-recipe-btn-prime">
+                    <p className="form-error">{formError}</p>
                         <button
                             tabIndex={tabIndex}
                             className="add-recipe" 
@@ -58,7 +59,6 @@ export default class AddGeneralInfo extends Component {
                             data-transition="-100" 
                             onClick={this.handleTransition.bind(this)}>Next
                         </button>    
-                        <p className="form-error">{formError}</p>
                     </div>
                     
                 </div>

@@ -3,18 +3,24 @@ import AddGeneralInfo from './AddGeneralInfo';
 import AddCaloriesServings from './AddCaloriesServings';
 import AddCookPrepTime from './AddCookPrepTime';
 import AddIngredients from './AddIngredients';
+import AddInstructions from './AddInstructions';
+import axios from 'axios';
 
 import './addEditModal.scss';
 
 export default class AddEditModal extends Component {
     state = {
+        user_key: '1234',
         name: '',
         description: '',
         calories: '',
         servings: '',
-        cookTime: '',
-        prepTime: '',
+        prepTime1: '',
+        prepTime2: '',
+        cookTime1: '',
+        cookTime2: '',
         ingredients: [],
+        instructions: [],
         transition: "0"
 
     }
@@ -35,29 +41,54 @@ export default class AddEditModal extends Component {
         this.setState({servings: e.target.value})
     }
 
-    handlePrepTimeChange = (e) => {
-        this.setState({prepTime: e.target.value})
+    handlePrepTimeChange1 = (e) => {
+        this.setState({prepTime1: e.target.value})
     }
 
-    handleCookTimeChange = (e) => {
-        this.setState({cookTime: e.target.value})
+    handleCookTimeChange1 = (e) => {
+        this.setState({cookTime1: e.target.value})
+    }
+
+    handlePrepTimeChange2 = (e) => {
+        this.setState({prepTime2: e.target.value})
+    }
+
+    handleCookTimeChange2 = (e) => {
+        this.setState({cookTime2: e.target.value})
     }
 
     getIngredients = (ingredients) => {
         this.setState({ingredients: ingredients});
     }
 
-    handleRemoveIngredient = (e) => {
-        console.log("Remove Ingredient");
+    handleRemoveIngredient = (ingredientID) => {
+        const newIngredientState = this.state.ingredients.filter(ingredient => ingredient.id !== ingredientID);
+        this.setState({ingredients: newIngredientState})
     }
+
+    getInstructions = (instructions) => {
+        console.log('GET INS: ', instructions)
+        this.setState({instructions: instructions});
+    }
+
+    handleRemoveInstruction = (instructionID) => {
+        const newInstructionState = this.state.instructions.filter(instruction => instruction.id !== instructionID);
+        this.setState({instructions: newInstructionState})
+    }    
 
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
+        axios.post(`http://superbpixels.com/recipe-app/test.php`, this.state, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
     }
 
     transition = (e) => {
         const transitionAmount = e.target.dataset.transition;
+        
         const editRecipeViews = document.getElementsByClassName('add-edit-recipe-view');
         
         for(let i = 0; i < editRecipeViews.length; i++){
@@ -90,22 +121,33 @@ export default class AddEditModal extends Component {
                             transition={this.transition}/>
 
                         <AddCookPrepTime
-                            handlePrepTimeChange={this.handlePrepTimeChange}
-                            handleCookTimeChange={this.handleCookTimeChange}
-                            prepTimeVal={this.state.prepTime}
-                            cookTimeVal={this.state.cookTime}
+                            handlePrepTimeChange1={this.handlePrepTimeChange1}
+                            handleCookTimeChange1={this.handleCookTimeChange1}
+                            handlePrepTimeChange2={this.handlePrepTimeChange2}
+                            handleCookTimeChange2={this.handleCookTimeChange2}
+                            prepTimeVal1={this.state.prepTime1}
+                            cookTimeVal1={this.state.cookTime1}
+                            prepTimeVal2={this.state.prepTime2}
+                            cookTimeVal2={this.state.cookTime2}
                             currentTransition={this.state.transition}
                             transition={this.transition}/>
                         
                         <AddIngredients
                             handleAddIngredient={this.handleAddIngredient}
                             handleRemoveIngredient={this.handleRemoveIngredient}
-                            submit={this.handleFormSubmit}
                             getIngredients={this.getIngredients}
                             prepTimeVal={this.state.prepTime}
                             cookTimeVal={this.state.cookTime}
                             currentTransition={this.state.transition}
                             transition={this.transition}/>
+
+                        <AddInstructions 
+                            handleInstructions={this.handleInstructions}
+                            submit={this.handleFormSubmit}
+                            transition={this.transition}
+                            getInstructions={this.getInstructions}
+                            handleRemoveInstruction={this.handleRemoveInstruction}
+                        />
                     </form>
                         
                 </div>
