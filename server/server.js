@@ -4,6 +4,12 @@ const app = express();
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const {PORT, DATABASE_URL} = require('./config');
+
+// Set mongoose promise
+mongoose.Promise = global.Promise;
 
 // Get Routes
 const recipeRouter = require('./routes/recipes');
@@ -19,9 +25,24 @@ app.use(express.static('public'));
 // Forward to correct router
 app.use('/recipes', recipeRouter.router);
 
+let server;
+function runServer(databaseURL=DATABASE_URL, port=PORT){
+    return new Promise((resolve, reject) => {
+        mongoose.connect(databaseURL, {useNewUrlParser: true}, err => {
+            if(err){
+                return reject(err);
+            }
+            server = app.listen(port, () => {
+                console.log(`App is listening on port: ${port}`);
+                resolve();
+            })
+            .on('error', err => {
+                mongoose.disconnect();
+                reject(err);
+            });
+        });
+    });
+}
 
-
-
-app.listen(3000, function(req, res){
-    console.log('Running on Port 3000');
-});
+console.log(DATABASE_URL)
+runServer();
