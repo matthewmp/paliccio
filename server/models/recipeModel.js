@@ -20,3 +20,4 @@ const recipeSchema = Schema({
 });
 
 const Recipes = mongoose.model('recipes', recipeSchema);
+module.exports = {Recipes};

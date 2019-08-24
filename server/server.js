@@ -16,6 +16,9 @@ const recipeRouter = require('./routes/recipes');
 
 // Get access to environment variables
 dotenv.config();
+
+app.use(bodyParser.urlencoded({extended : true}));
+
 // Setup morgan comments
 app.use(morgan('common'));
 
