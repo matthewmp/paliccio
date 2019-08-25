@@ -79,7 +79,7 @@ export default class AddEditModal extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log(JSON.stringify(this.state));
-        axios.post(`http://superbpixels.com/recipe-app/test.php`, this.state, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+        axios.post(`/recipes`, this.state, {headers: {'Content-Type': 'application/json'}})
             .then(res => {
                 console.log(res);
                 console.log(res.data);

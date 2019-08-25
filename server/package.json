@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-server": "nodemon server.js"
+    "start-server": "nodemon server.js",
+    "clear-public": "cd public && rm -R *",
+    "build-server": "cd ../client/build && cp -R * ../../server/public"
   },
   "author": "",
   "license": "ISC",
