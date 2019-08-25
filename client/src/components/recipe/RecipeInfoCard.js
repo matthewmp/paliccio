@@ -25,7 +25,7 @@ export default class RecipeInfoCard extends Component {
     
     return (
       <div className="col s12 m4">
-        <div className="card" onMouseEnter={this.toggleHoverInfo} onClick={this.props.toggleModal}>
+        <div className="card" onMouseEnter={this.toggleHoverInfo} onClick={this.props.toggleModal} data-recipe-id={this.props.data._id}>
           <div className="card-image">
               <img src="./images/bread.png" alt="bread"/>
             
