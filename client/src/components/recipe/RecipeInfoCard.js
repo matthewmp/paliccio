@@ -22,6 +22,7 @@ export default class RecipeInfoCard extends Component {
 
   render() {
     const hoverClass = this.state.showHoverInfo ? 'recipe-card-hover show' : 'recipe-card-hover hide';
+    let recipeDescription = this.props.data.description.length > 50 ? `${this.props.data.description.slice(0,50)}...` : this.props.data.description; 
     
     return (
       <div className="col s12 m4">
@@ -32,7 +33,7 @@ export default class RecipeInfoCard extends Component {
           </div>
           <span className="card-title">{this.props.data.name}</span>
           <div className="card-content">
-              {this.props.data.description}
+              {recipeDescription}
           </div>
         
           <div className={hoverClass} onMouseLeave={this.toggleHoverInfo} onClick={this.props.toggleModal}>

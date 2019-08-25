@@ -19,7 +19,6 @@ class Landing extends React.Component{
     }
 
     toggleRecipeModal = () => {
-        console.log(this.state.showRecipeModal)
         this.setState({showRecipeModal: !this.state.showRecipeModal})
     };
 
@@ -34,7 +33,6 @@ class Landing extends React.Component{
         });
     }
     render(){
-        console.log(this.state);
         let recipeModal = this.state.showRecipeModal ? <RecipeModal toggleModal={this.toggleRecipeModal} /> : null;
         let addRecipeModal = this.state.showAddRecipeModal ? <AddEditModal showHide={this.toggleAddRecipeModal} /> : null;
 

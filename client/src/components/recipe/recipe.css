@@ -21,6 +21,12 @@ span.card-title {
 
 .card{
     margin: 10px;
+    max-width: 350px;
+}
+
+.card-content{
+    min-height: 110px !important;
+    overflow-wrap: break-word !important;
 }
 
 .tile-container{
