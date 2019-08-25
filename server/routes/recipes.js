@@ -15,6 +15,18 @@ router.get('/', (req, res) => {
     
 });
 
+// Get last 3 recipes
+router.get('/latest', (req, res) => {
+    Recipes.find().limit(3)
+    .then(recipes => {
+        res.status(200).json(recipes);
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    })
+    
+});
+
 router.post('/', bodyParser.json(), (req, res) => {
     const requiredFields = ['name','description','calories','servings','prepTime1','prepTime2','cookTime1','cookTime2','ingredients','instructions'];
  
@@ -24,7 +36,6 @@ router.post('/', bodyParser.json(), (req, res) => {
             const message = `Missing ${field}`;
             res.status(422).json(message);
         }
-
     }
 
     const recipeRequest = {

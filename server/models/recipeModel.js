@@ -16,7 +16,8 @@ const recipeSchema = Schema({
     }],
     instructions: [{
         instruction: {type: String}
-    }]
+    }],
+    created: {type: Date, default: Date.now()}
 });
 
 const Recipes = mongoose.model('recipes', recipeSchema);
