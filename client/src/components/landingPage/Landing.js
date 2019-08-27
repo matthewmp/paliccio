@@ -1,12 +1,13 @@
 import React from 'react'
 import SearchForm from '../searchForm/SearchForm';
 import RecipeInfoCard from '../recipe/RecipeInfoCard';
-
-import './landing.css';
-
-import axios from 'axios';
 import RecipeModal from '../recipe/RecipeModal';
 import AddEditModal from '../add_modify_modal/AddEditModal';
+
+import axios from 'axios';
+import { connect } from 'react-redux';
+
+import './landing.css';
 
 class Landing extends React.Component{
     constructor(props){
@@ -14,12 +15,25 @@ class Landing extends React.Component{
         this.state = {
             latestRecipes: [],
             showRecipeModal: false,
-            showAddRecipeModal: false
+            showAddRecipeModal: false,
+            currentRecipeId: ''
         }
+        
     }
 
-    toggleRecipeModal = () => {
-        this.setState({showRecipeModal: !this.state.showRecipeModal})
+    toggleRecipeModal = (e, recipeId) => {
+        if(recipeId){
+            axios.get(`/recipes/${recipeId}`, {headers: {'Content-Type': 'application/json'}})
+            .then(recipe => {
+                this.setState({currentRecipe: recipe.data, showRecipeModal: true})
+            })
+        } 
+        else {
+            this.setState({showRecipeModal: false})
+        }
+
+        
+        
     };
 
     toggleAddRecipeModal = () => {
@@ -33,7 +47,7 @@ class Landing extends React.Component{
         });
     }
     render(){
-        let recipeModal = this.state.showRecipeModal ? <RecipeModal toggleModal={this.toggleRecipeModal} /> : null;
+        let recipeModal = this.state.showRecipeModal ? <RecipeModal toggleModal={this.toggleRecipeModal} recipe={this.state.currentRecipe} /> : null;
         let addRecipeModal = this.state.showAddRecipeModal ? <AddEditModal showHide={this.toggleAddRecipeModal} /> : null;
 
         let latestRecipes = this.state.latestRecipes.map((recipe, ind) => {
@@ -59,4 +73,8 @@ class Landing extends React.Component{
     }
 }
 
-export default Landing;
+const mapStateToProps = (state, props) => ({
+    appState: state.current_recipe_id
+})
+
+export default connect(mapStateToProps)(Landing);

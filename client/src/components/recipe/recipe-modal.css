@@ -177,7 +177,6 @@ span.ingredients-label{
     margin: 5px 0;
     font-size: 2.5rem;
     font-family: 'Satisfy';
-    justify-content: center;
 }
 
 span.ingredient-list-number, span.instruction-list-number {

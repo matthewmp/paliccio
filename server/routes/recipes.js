@@ -24,7 +24,17 @@ router.get('/latest', (req, res) => {
     .catch(err => {
         res.status(500).json(err);
     })
-    
+});
+
+// Get by ID
+router.get('/:id', (req, res) => {
+    Recipes.findById({_id: req.params.id})
+    .then(recipe => {
+        res.status(200).json(recipe);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    });
 });
 
 router.post('/', bodyParser.json(), (req, res) => {

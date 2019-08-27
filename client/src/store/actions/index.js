@@ -1,2 +1,6 @@
-export const SHOW_LOGIN = 'SHOW_LOGIN';
-export const HIDE_LOGIN = 'HIDE_LOGIN';
+export const SET_CURRENT_RECIPE = 'SET_CURRENT_RECIPE';
+export const set_current_recipe = (recipeID) => ({
+    type: SET_CURRENT_RECIPE,
+    recipeID
+})
+

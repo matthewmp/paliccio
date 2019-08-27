@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
+import {current_recipe_id} from './current_recipe_reducer';
 
-import UIreducer from 'UIreducer';
-
-const rootReducer = combineReducers({
-    UI: UIreducer
-});
-
-export default rootReducer;
+export default combineReducers({
+    current_recipe_id
+})

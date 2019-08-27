@@ -17,7 +17,7 @@ const RecipeModal = (props) => {
               </div>
               <div className="col l8 s12 recipe-modal-header-r1 offset-s2">
                 <div className="recipe-header-info">
-                  <div className="recipe-title">Pane con Amore</div>
+                  <div className="recipe-title">{props.recipe.name}</div>
                     <div className="recipe-time-info row">
                       <div className="clock-wrapper col s3">
                         <img src="./images/clock.svg" alt="cook time info"/>
@@ -25,14 +25,22 @@ const RecipeModal = (props) => {
                       <div className="prep-time-wrapper col s3">
                         <div className="recipe-header-label">Prep</div>
                         <div className="prep-time">
-                          <span className="recipe-header-number">30</span>
+                          <span className="recipe-header-number">{props.recipe.prepTime1}</span>
+                          <span className="min-hour">h</span>
+                        </div>
+                        <div className="prep-time">
+                          <span className="recipe-header-number">{props.recipe.prepTime2}</span>
                           <span className="min-hour">m</span>
                         </div>
                       </div>
                       <div className="cook-time-wrapper col s3">
                         <div className="recipe-header-label">Cook</div>
                         <div className="cook-time">
-                          <span className="number recipe-header-number">30</span>
+                          <span className="number recipe-header-number">{props.recipe.prepTime1}</span>
+                          <span className="min-hour">h</span>
+                        </div>
+                        <div className="cook-time">
+                          <span className="number recipe-header-number">{props.recipe.prepTime2}</span>
                           <span className="min-hour">m</span>
                         </div>
                       </div>
@@ -43,7 +51,7 @@ const RecipeModal = (props) => {
                             </div>
                             <div className="vote-text-wrapper">
                                 <span className="recipe-header-label">Votes: </span>
-                                <span className="recipe-header-amount vote-amount">0</span>
+                                <span className="recipe-header-amount vote-amount">{props.recipe.votes || 0}</span>
                             </div>
                             <div className="down-vote">
                                 <img src="./images/downvote.svg" alt=""/>
@@ -54,9 +62,9 @@ const RecipeModal = (props) => {
                     
                     <div className="cal-servings-wrapper">
                       <span className="calories recipe-header-label">Calories:</span>
-                      <span className="calories recipe-header-number">400</span>
+                      <span className="calories recipe-header-number">{props.recipe.calories}</span>
                       <span className="servings recipe-header-label">Servings: </span>
-                      <span className="servings recipe-header-number">4</span>
+                      <span className="servings recipe-header-number">{props.recipe.servings}</span>
                     </div>
                 </div>
               </div>
@@ -64,9 +72,9 @@ const RecipeModal = (props) => {
           <div className="divider"></div>
           <ChefInfo />
           <div className="divider"></div>
-          <IngredientsInfo />
+            <IngredientsInfo ingredients={props.recipe.ingredients}/>
           <div className="divider"></div>
-          <InstructionsInfo />
+            <InstructionsInfo instructions={props.recipe.instructions} />
         </div>
       </div>
     )

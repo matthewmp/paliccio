@@ -3,10 +3,14 @@ import React, { Component } from 'react'
 import './recipe.css';
 
 export default class RecipeInfoCard extends Component {
-
-  state = {
-    showHoverInfo: false
+  constructor(props){
+    super(props);
+    this.state = {
+      showHoverInfo: false
+    }
+    this.currentCard = React.createRef();
   }
+  
 
   toggleHoverInfo = (e) => {
     this.setState({
@@ -20,13 +24,17 @@ export default class RecipeInfoCard extends Component {
     })
   }
 
+  clickEvent = (e) => {
+    this.props.toggleModal(e, this.currentCard.current.dataset.recipeId);
+  }
+
   render() {
     const hoverClass = this.state.showHoverInfo ? 'recipe-card-hover show' : 'recipe-card-hover hide';
     let recipeDescription = this.props.data.description.length > 50 ? `${this.props.data.description.slice(0,50)}...` : this.props.data.description; 
     
     return (
       <div className="col s12 m4">
-        <div className="card" onMouseEnter={this.toggleHoverInfo} onClick={this.props.toggleModal} data-recipe-id={this.props.data._id}>
+        <div className="card" onMouseEnter={this.toggleHoverInfo} onClick={this.clickEvent} data-recipe-id={this.props.data._id} ref={this.currentCard}>
           <div className="card-image">
               <img src="./images/bread.png" alt="bread"/>
             
