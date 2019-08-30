@@ -28,6 +28,19 @@ router.get('/latest', (req, res) => {
     })
 });
 
+// Get Top Voted Recipes
+router.get('/topvoted', (req, res) => {
+    Recipes.find()
+    .sort({'votes': 'desc'})
+    .limit(5)
+    .then(recipes => {
+        res.status(200).json(recipes);
+    })
+    .catch(err => {
+        res.status(500).json(err)
+    })
+});
+
 // Get by ID
 router.get('/:id', (req, res) => {
     Recipes.findById({_id: req.params.id})
