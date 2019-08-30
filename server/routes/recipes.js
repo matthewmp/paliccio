@@ -54,7 +54,20 @@ router.get('/:id', (req, res) => {
 
 // Post New Recipe
 router.post('/', bodyParser.json(), (req, res) => {
-    const requiredFields = ['name','description','calories','servings','prepTime1','prepTime2','cookTime1','cookTime2','ingredients','instructions'];
+    const requiredFields = ['name','description','calories','servings','ingredients','instructions'];
+    // Cook/Prep Times require combined total of > 1 per category
+    const requiredPrepTimes = req.body['prepTime1'] + req.body['prepTime2'];
+    const requiredCookTimes = req.body['cookTime1'] + req.body['cookTime2'];
+
+    if(requiredCookTimes <= 0){
+        res.status(422).json(`Cook Time in minutes and hours must be greater than 0`);
+        return;
+    }
+
+    if(requiredPrepTimes <= 0){
+        res.status(422).json(`Prep Time in minutes and hours must be greater than 0`);
+        return;
+    }
     
     for(let i = 0; i < requiredFields.length; i++){
         let field = requiredFields[i];

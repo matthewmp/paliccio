@@ -12,10 +12,10 @@ export default class AddCookPrepTime extends Component {
     state = {
         formError: ''
     }
-
+    
     handleTransition = (e) => {
-        if((this.cookTime1.current.value.trim() > 0) && (this.prepTime1.current.value.trim() > 0) 
-        && (this.cookTime2.current.value.trim() > 0) && (this.prepTime2.current.value.trim()) > 0){
+        if((this.cookTime1.current.value.trim()) + (this.cookTime2.current.value.trim()) > 0 
+        && (this.prepTime1.current.value.trim()) + (this.prepTime2.current.value.trim()) > 0){
             this.setState({formError: ""})
             this.props.transition(e);
         } 
