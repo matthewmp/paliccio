@@ -11,10 +11,7 @@ import store from '../store/store';
 import './app.css';
 
 class App extends Component {
-
   render() {
-    // let recipeModal = this.state.showModal ? <RecipeModal toggleModal={this.toggleModal}/> : '';
-    // let addRecipeModal = this.state.showAddRecipe ? <AddEditModal showHide={this.toggleAddRecipeModal}/> : '';
     return (
       <BrowserRouter>
         <div className="App">
