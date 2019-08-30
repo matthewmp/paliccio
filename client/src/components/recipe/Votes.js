@@ -19,12 +19,18 @@ export default class Votes extends React.Component{
         .then(result => {
             this.setState({votes: result.data.votes})
         })
+        .catch(err => {
+            this.setState({votes: '???'});
+        })
     }
 
     downVote = () => {
         axios.put(`/recipes/votedown/${this.props.recipeId}`, {headers: {'Content-Type': 'application/json'}})
         .then(result => {
             this.setState({votes: result.data.votes})
+        })
+        .catch(err => {
+            this.setState({votes: '???'});
         })
     }
 
