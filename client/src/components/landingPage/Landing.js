@@ -64,6 +64,10 @@ class Landing extends React.Component{
                         {latestRecipes}
                     </div>
                 </div>
+
+                <div className="new-recipe-header">
+                    Top Voted Recipes
+                </div>
                 {recipeModal}
                 {addRecipeModal}
             </div>

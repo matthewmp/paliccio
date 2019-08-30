@@ -17,7 +17,9 @@ router.get('/', (req, res) => {
 
 // Get last 3 recipes
 router.get('/latest', (req, res) => {
-    Recipes.find().limit(3)
+    Recipes.find()
+    .sort({'created': 'desc'})
+    .limit(3)
     .then(recipes => {
         res.status(200).json(recipes);
     })
@@ -40,12 +42,13 @@ router.get('/:id', (req, res) => {
 // Post New Recipe
 router.post('/', bodyParser.json(), (req, res) => {
     const requiredFields = ['name','description','calories','servings','prepTime1','prepTime2','cookTime1','cookTime2','ingredients','instructions'];
- 
+    
     for(let i = 0; i < requiredFields.length; i++){
         let field = requiredFields[i];
         if(!req.body[field]){
             const message = `Missing ${field}`;
             res.status(422).json(message);
+            return;
         }
     }
 
