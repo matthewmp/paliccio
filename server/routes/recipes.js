@@ -37,6 +37,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Post New Recipe
 router.post('/', bodyParser.json(), (req, res) => {
     const requiredFields = ['name','description','calories','servings','prepTime1','prepTime2','cookTime1','cookTime2','ingredients','instructions'];
  
@@ -71,6 +72,34 @@ router.post('/', bodyParser.json(), (req, res) => {
     })
 })
 
+// Update Recipe Vote
+router.put('/voteup/:id', bodyParser.json(), (req, res) => {
+    console.log('PUTTIN: ', req.params.id)
+    Recipes.findOneAndUpdate(req.paramsid, {$inc: {votes: 1}}, {new: true})
+    .then(recipe => {
+        // console.log(recipe)
+        res.status(200).json(recipe);
+    })
+    .catch(err => {
+        console.log(err);
+        res.json(err)
+    })
+})
+
+router.put('/votedown/:id', bodyParser.json(), (req, res) => {
+    console.log('PUTTIN: ', req.params.id)
+    Recipes.findOneAndUpdate(req.paramsid, {$inc: {votes: -1}}, {new: true})
+    .then(recipe => {
+        // console.log(recipe)
+        res.status(200).json(recipe);
+    })
+    .catch(err => {
+        console.log(err);
+        res.json(err)
+    })
+})
+
+// Route Funcs
 function postRecipe(recipeRequest){
     return new Promise((resolve, reject) => {
         Recipes

@@ -31,7 +31,7 @@ app.use('/recipes', recipeRouter.router);
 let server;
 function runServer(databaseURL=DATABASE_URL, port=PORT){
     return new Promise((resolve, reject) => {
-        mongoose.connect(databaseURL, {useNewUrlParser: true}, err => {
+        mongoose.connect(databaseURL, {useNewUrlParser: true, useFindAndModify: false}, err => {
             if(err){
                 return reject(err);
             }

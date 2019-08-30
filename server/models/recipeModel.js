@@ -10,6 +10,7 @@ const recipeSchema = Schema({
     prepTime2: {type: Number},
     cookTime1: {type: Number},
     cookTime2: {type: Number},
+    votes: {type: Number},
     ingredients: [{
         amount: {type: String},
         ingredient: {type: String}

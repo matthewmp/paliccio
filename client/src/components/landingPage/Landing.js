@@ -61,7 +61,6 @@ class Landing extends React.Component{
                     Recently Added Recipes
                 </div>
                 <div className="container new-recipes">
-                    
                     <div className="row">
                         {latestRecipes}
                     </div>
