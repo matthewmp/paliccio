@@ -15,11 +15,13 @@ export default class Votes extends React.Component{
     }
 
     upVote = () => {
+        console.log(this.props.recipeId)
         axios.put(`/recipes/voteup/${this.props.recipeId}`, {headers: {'Content-Type': 'application/json'}})
         .then(result => {
             this.setState({votes: result.data.votes})
         })
         .catch(err => {
+            console.error(err);
             this.setState({votes: '???'});
         })
     }
@@ -30,6 +32,7 @@ export default class Votes extends React.Component{
             this.setState({votes: result.data.votes})
         })
         .catch(err => {
+            console.error(err);
             this.setState({votes: '???'});
         })
     }

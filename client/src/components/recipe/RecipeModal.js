@@ -8,6 +8,7 @@ import './recipe-modal.css';
 class RecipeModal extends React.Component{
   
   render(){
+    console.log(this.props.recipe._id)
     return (
       <div className="recipe-modal">
         <div className="xClose" onClick={this.props.toggleModal}>&times;</div>

@@ -75,7 +75,7 @@ router.post('/', bodyParser.json(), (req, res) => {
 // Update Recipe Vote
 router.put('/voteup/:id', bodyParser.json(), (req, res) => {
     console.log('PUTTIN: ', req.params.id)
-    Recipes.findOneAndUpdate(req.paramsid, {$inc: {votes: 1}}, {new: true})
+    Recipes.findByIdAndUpdate(req.params.id, {$inc: {votes: 1}}, {new: true})
     .then(recipe => {
         // console.log(recipe)
         res.status(200).json(recipe);
@@ -88,7 +88,7 @@ router.put('/voteup/:id', bodyParser.json(), (req, res) => {
 
 router.put('/votedown/:id', bodyParser.json(), (req, res) => {
     console.log('PUTTIN: ', req.params.id)
-    Recipes.findOneAndUpdate(req.paramsid, {$inc: {votes: -1}}, {new: true})
+    Recipes.findByIdAndUpdate(req.params.id, {$inc: {votes: -1}}, {new: true})
     .then(recipe => {
         // console.log(recipe)
         res.status(200).json(recipe);

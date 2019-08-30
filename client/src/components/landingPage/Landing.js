@@ -26,6 +26,9 @@ class Landing extends React.Component{
             .then(recipe => {
                 this.setState({currentRecipe: recipe.data, showRecipeModal: true})
             })
+            .catch(err => {
+                alert('There appears to be an error.  Please try again later.')
+            })
         } 
         else {
             this.setState({showRecipeModal: false})
