@@ -18,7 +18,6 @@ class Landing extends React.Component{
             showAddRecipeModal: false,
             currentRecipeId: ''
         }
-        
     }
 
     toggleRecipeModal = (e, recipeId) => {
@@ -31,9 +30,6 @@ class Landing extends React.Component{
         else {
             this.setState({showRecipeModal: false})
         }
-
-        
-        
     };
 
     toggleAddRecipeModal = () => {
