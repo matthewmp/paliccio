@@ -58,7 +58,7 @@ router.post('/', bodyParser.json(), (req, res) => {
     
     for(let i = 0; i < requiredFields.length; i++){
         let field = requiredFields[i];
-        if(!req.body[field]){
+        if(!req.body[field] || req.body[field].length < 1){
             const message = `Missing ${field}`;
             res.status(422).json(message);
             return;
