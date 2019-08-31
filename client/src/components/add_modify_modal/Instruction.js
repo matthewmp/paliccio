@@ -27,23 +27,24 @@ export default class Instruction extends React.Component{
         return(
             <div className="add-instruction-wrapper" data-id={this.props.dataId}>
                 <input 
-                    tabIndex="-1" 
+                    tabIndex={this.props.tabIndex} 
                     type="text" 
                     className="inp-instruction add-edit-recipe-input" 
                     placeholder="Type Instruction"
                     value={this.state.instruction}
                     onChange={this.handleInstructionChange}
                     ref={this.instruction}
+                    onFocus={this.props.toggleTabIndex}
                     required 
                 />
                 <button 
-                    tabIndex="-1"
+                    tabIndex={this.props.tabIndex}
                     type="button" 
                     className="btn-add-ingredient"
                     onClick={this.handleAddInstruction}
                     >+</button>
                 <button 
-                    tabIndex="-1"
+                    tabIndex={this.props.tabIndex}
                     type="button" 
                     className="btn-add-ingredient"
                     onClick={this.props.remove}

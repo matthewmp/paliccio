@@ -22,7 +22,6 @@ export default class AddEditModal extends Component {
         ingredients: [],
         instructions: [],
         transition: "0"
-
     }
 
     handleNameChange = (e) => {
@@ -144,10 +143,10 @@ export default class AddEditModal extends Component {
                         <AddInstructions 
                             handleInstructions={this.handleInstructions}
                             submit={this.handleFormSubmit}
-                            transition={this.transition}
                             getInstructions={this.getInstructions}
                             handleRemoveInstruction={this.handleRemoveInstruction}
-                        />
+                            currentTransition={this.state.transition}
+                            transition={this.transition}/>
                     </form>
                         
                 </div>

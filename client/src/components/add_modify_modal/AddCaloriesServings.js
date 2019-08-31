@@ -8,7 +8,9 @@ export default class AddCaloriesServings extends Component {
     }
 
     state = {
-        formError: ''
+        formError: '',
+        nextBorderClass: false,
+        prevBorderClass: false
     }
 
     handleNextTransition = (e) => {
@@ -19,8 +21,19 @@ export default class AddCaloriesServings extends Component {
         }
     }
 
+    handleNextButtonFocus = () => {
+        this.setState({nextBorderClass: !this.state.nextBorderClass})
+    }
+
+    handlePrevButtonFocus = (bool) => {
+        this.setState({prevBorderClass: !this.state.prevBorderClass})
+    }
+
     render() {
         const formError = this.state.formError;
+        const tabIndex = this.props.currentTransition === "-100" ? "0" : "-1";
+        const nextBorderClass = this.state.nextBorderClass ? 'add-recipe button-border' : 'add-recipe';
+        const prevBorderClass = this.state.prevBorderClass ? 'add-recipe button-border' : 'add-recipe';
         return (
             <section className="add-edit-recipe-view calories-servings-info">
             <div className="add-edit-recipe-label modal-label">Calories / Servings</div>
@@ -33,6 +46,7 @@ export default class AddCaloriesServings extends Component {
                         onChange={this.props.handleCaloriesChange} 
                         value={this.props.caloriesVal}
                         ref={this.calories}
+                        tabIndex={tabIndex}
                     />
 
                     <input 
@@ -43,23 +57,30 @@ export default class AddCaloriesServings extends Component {
                         onChange={this.props.handleServingsChange}
                         value={this.props.servingsVal}
                         ref={this.servings}
+                        tabIndex={tabIndex}
                     />
                 </div>
                 
                 <div className="add-recipe-btn-wrapper">
                     <p className="form-error">{formError}</p>
                     <button 
-                        className="add-recipe" 
+                        className={prevBorderClass}
                         id="servingsPrevious" 
                         type="button"
                         data-transition="0"
+                        tabIndex={tabIndex}
+                        onFocus={this.handlePrevButtonFocus}
+                        onBlur={this.handlePrevButtonFocus}
                         onClick={this.props.transition}>Previous
                     </button>
                     <button 
-                        className="add-recipe" 
+                        className={nextBorderClass}
                         id="servingsNext" 
                         type="button"
                         data-transition="-200"
+                        tabIndex={tabIndex}
+                        onFocus={this.handleNextButtonFocus}
+                        onBlur={this.handleNextButtonFocus}
                         onClick={this.handleNextTransition}>Next
                     </button>
                 </div>

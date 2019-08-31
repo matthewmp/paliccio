@@ -10,10 +10,19 @@ export default class AddInstructions extends Component {
     }
 
     state = {
-        instructions: []
+        instructions: [],
+        nextBorderClass: false,
+        prevBorderClass: false,
+        tabIndex: "-1"
     }
 
     componentDidMount(){
+        if(this.state.instructions.length === 0){
+            this.addInstruction();
+        }
+    }
+
+    componentDidUpdate(){
         if(this.state.instructions.length === 0){
             this.addInstruction();
         }
@@ -31,7 +40,6 @@ export default class AddInstructions extends Component {
     }
 
     addInstruction = (e) => {
-        console.log("Add: ", this.instructionContainer.current.childNodes)
         if(this.inputsAreFilled(this.instructionContainer.current.childNodes)){
             this.setState({
                 instructions: this.state.instructions.concat(
@@ -41,11 +49,30 @@ export default class AddInstructions extends Component {
                         add={this.addInstruction}
                         remove={this.removeInstruction}
                         className = {this.state.instructions.length + 1}
+                        tabIndex={this.state.tabIndex}
+                        toggleTabIndex={this.toggleTabIndex}    
                     />
                 )
             });
         };
     }
+
+    toggleTabIndex = () => {
+        if(this.state.tabIndex === "-1"){
+            this.setState({tabIndex: "0", instructions: []});
+            this.addInstruction();
+        } 
+        this.forceUpdate();
+    }
+
+    handleNextButtonFocus = () => {
+        this.setState({nextBorderClass: !this.state.nextBorderClass})
+    }
+
+    handlePrevButtonFocus = (bool) => {
+        this.setState({prevBorderClass: !this.state.prevBorderClass})
+    }
+
 
     collectAllInstructions = () => {
         const allInstructionsWrapper = [...this.instructionContainer.current.childNodes];
@@ -78,6 +105,10 @@ export default class AddInstructions extends Component {
     }
 
     render() {
+        let tabIndex = this.props.currentTransition === "-400" ? "0" : "-1";
+        const nextBorderClass = this.state.nextBorderClass ? 'add-recipe button-border' : 'add-recipe';
+        const prevBorderClass = this.state.prevBorderClass ? 'add-recipe button-border' : 'add-recipe';
+        
         return (
             <section className="add-edit-recipe-view ">
                 <div className="add-edit-recipe-label modal-label">Add Instructions</div>
@@ -88,18 +119,22 @@ export default class AddInstructions extends Component {
                     
                     <div className="add-recipe-btn-wrapper">
                         <button
-                            tabIndex="-1" 
-                            className="add-recipe" 
+                            tabIndex={tabIndex} 
+                            className={prevBorderClass} 
                             id="servingsPrevious" 
                             type="button"
                             data-transition="-300"
+                            onFocus={this.handlePrevButtonFocus}
+                            onBlur={this.handlePrevButtonFocus}
                             onClick={this.props.transition}>Previous
                         </button>
                         <button
-                            tabIndex="-1" 
-                            className="add-recipe" 
+                            tabIndex={tabIndex} 
+                            className={nextBorderClass} 
                             id="servingsNext" 
                             type="submit"
+                            onFocus={this.handleNextButtonFocus}
+                            onBlur={this.handleNextButtonFocus}
                             onClick={this.submit}>Submit
                         </button>
                     </div>

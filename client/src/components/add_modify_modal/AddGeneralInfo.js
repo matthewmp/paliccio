@@ -8,7 +8,8 @@ export default class AddGeneralInfo extends Component {
     }
 
     state = {
-        formError: ''
+        formError: '',
+        borderClass: false
     }
 
     handleTransition = (e) => {
@@ -21,9 +22,14 @@ export default class AddGeneralInfo extends Component {
         }
     }
 
+    handleButtonFocus = (bool) => {
+        this.setState({borderClass: !this.state.borderClass})
+    }
+
     render() {
         // Set tabIndex
         const tabIndex = this.props.currentTransition === "0" ? "0" : "-1";
+        const borderClass = this.state.borderClass ? 'add-recipe button-border' : 'add-recipe';
         let formError = this.state.formError;
         return (
             <section className="add-edit-recipe-view general-info">
@@ -53,11 +59,14 @@ export default class AddGeneralInfo extends Component {
                     <p className="form-error">{formError}</p>
                         <button
                             tabIndex={tabIndex}
-                            className="add-recipe" 
+                            className={borderClass}
                             id="generalNext" 
                             type="button" 
                             data-transition="-100" 
-                            onClick={this.handleTransition.bind(this)}>Next
+                            onClick={this.handleTransition.bind(this)}
+                            onFocus={this.handleButtonFocus}
+                            onBlur={this.handleButtonFocus}
+                            >Next
                         </button>    
                     </div>
                     
