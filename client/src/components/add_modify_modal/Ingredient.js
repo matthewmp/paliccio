@@ -33,17 +33,18 @@ export default class Ingredient extends React.Component{
         return(
             <div className="add-ingredient-wrapper" data-id={this.props.dataId}>
                 <input 
-                    tabIndex="-1" 
+                    tabIndex={this.props.tabIndex} 
                     type="text" 
                     className="inp-ingredient add-edit-recipe-input" 
                     placeholder="Type Ingredient"
                     value={this.state.ingredient}
                     onChange={this.handleIngredientChange}
+                    onFocus={this.props.toggleTabIndex}
                     ref={this.ingredient}
                     required 
                 />
                 <input 
-                    tabIndex="-1" 
+                    tabIndex={this.props.tabIndex} 
                     type="text" 
                     className="inp-amount add-edit-recipe-input" 
                     placeholder="Type Quantity i.e 2tsp" 
@@ -53,13 +54,13 @@ export default class Ingredient extends React.Component{
                     required
                 />
                 <button 
-                    tabIndex="-1"
+                    tabIndex={this.props.tabIndex}
                     type="button" 
                     className="btn-add-ingredient"
                     onClick={this.handleAddIngredient}
                     >+</button>
                 <button 
-                    tabIndex="-1"
+                    tabIndex={this.props.tabIndex}
                     type="button" 
                     className="btn-add-ingredient"
                     onClick={this.props.remove}
