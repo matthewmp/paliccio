@@ -2,6 +2,7 @@ span.card-title {
     display: block;
     text-align: center;
     padding-top: 10px;
+    color: #EF005B;
 }
 
 .new-recipe-header{
@@ -27,6 +28,12 @@ span.card-title {
 .card-content{
     min-height: 110px !important;
     overflow-wrap: break-word !important;
+    text-align: center;
+}
+
+.card-votes{
+    color: #EF005B;
+    padding: 10px 0;
 }
 
 .tile-container{
