@@ -10,10 +10,7 @@ export default class AddInstructions extends Component {
     }
 
     state = {
-        instructions: [],
-        nextBorderClass: false,
-        prevBorderClass: false,
-        tabIndex: "-1"
+        instructions: []
     }
 
     componentDidMount(){
@@ -48,31 +45,12 @@ export default class AddInstructions extends Component {
                         dataId={uuidv4()}
                         add={this.addInstruction}
                         remove={this.removeInstruction}
-                        className = {this.state.instructions.length + 1}
-                        tabIndex={this.state.tabIndex}
-                        toggleTabIndex={this.toggleTabIndex}    
+                        className = {this.state.instructions.length + 1}  
                     />
                 )
             });
         };
     }
-
-    toggleTabIndex = () => {
-        if(this.state.tabIndex === "-1"){
-            this.setState({tabIndex: "0", instructions: []});
-            this.addInstruction();
-        } 
-        this.forceUpdate();
-    }
-
-    handleNextButtonFocus = () => {
-        this.setState({nextBorderClass: !this.state.nextBorderClass})
-    }
-
-    handlePrevButtonFocus = (bool) => {
-        this.setState({prevBorderClass: !this.state.prevBorderClass})
-    }
-
 
     collectAllInstructions = () => {
         const allInstructionsWrapper = [...this.instructionContainer.current.childNodes];
@@ -105,12 +83,10 @@ export default class AddInstructions extends Component {
     }
 
     render() {
-        let tabIndex = this.props.currentTransition === "-400" ? "0" : "-1";
-        const nextBorderClass = this.state.nextBorderClass ? 'add-recipe button-border' : 'add-recipe';
-        const prevBorderClass = this.state.prevBorderClass ? 'add-recipe button-border' : 'add-recipe';
+        let sectionClass = this.props.currentTransition === "-400" ? "add-edit-recipe-view" : "add-edit-recipe-view hidden";
         
         return (
-            <section className="add-edit-recipe-view ">
+            <section className={sectionClass}>
                 <div className="add-edit-recipe-label modal-label">Add Instructions</div>
                 <div className="add-recipe-inputs-wrapper">
                     <div className="ingredient-component-container" ref={this.instructionContainer} onChange={this.collectAllInstructions}>
@@ -118,23 +94,17 @@ export default class AddInstructions extends Component {
                     </div>
                     
                     <div className="add-recipe-btn-wrapper">
-                        <button
-                            tabIndex={tabIndex} 
-                            className={prevBorderClass} 
+                        <button 
+                            className="add-recipe" 
                             id="servingsPrevious" 
                             type="button"
                             data-transition="-300"
-                            onFocus={this.handlePrevButtonFocus}
-                            onBlur={this.handlePrevButtonFocus}
                             onClick={this.props.transition}>Previous
                         </button>
-                        <button
-                            tabIndex={tabIndex} 
-                            className={nextBorderClass} 
+                        <button 
+                            className="add-recipe" 
                             id="servingsNext" 
                             type="submit"
-                            onFocus={this.handleNextButtonFocus}
-                            onBlur={this.handleNextButtonFocus}
                             onClick={this.submit}>Submit
                         </button>
                     </div>

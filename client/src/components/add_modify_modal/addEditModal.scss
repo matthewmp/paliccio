@@ -6,6 +6,11 @@ $pinkPhase: rgba(239,0,91, 0.85);
 * {
     box-sizing: border-box;
 }
+
+.hidden{
+    visibility: hidden !important;
+    transition: visibility 3s;
+}
 .add-edit-modal-overlay{
     position: absolute;
     display: flex;
@@ -225,6 +230,10 @@ section.add-edit-recipe-view {
         transition: .2s;
         letter-spacing: 4px;
         cursor: pointer;
+    }
+
+    button.add-recipe:focus{
+        border: 1px solid #fff;
     }
 
     .button-border{

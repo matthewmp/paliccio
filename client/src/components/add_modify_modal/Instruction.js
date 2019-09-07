@@ -34,17 +34,14 @@ export default class Instruction extends React.Component{
                     value={this.state.instruction}
                     onChange={this.handleInstructionChange}
                     ref={this.instruction}
-                    onFocus={this.props.toggleTabIndex}
                     required 
                 />
                 <button 
-                    tabIndex={this.props.tabIndex}
                     type="button" 
                     className="btn-add-ingredient"
                     onClick={this.handleAddInstruction}
                     >+</button>
                 <button 
-                    tabIndex={this.props.tabIndex}
                     type="button" 
                     className="btn-add-ingredient"
                     onClick={this.props.remove}

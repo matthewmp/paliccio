@@ -8,8 +8,7 @@ export default class AddGeneralInfo extends Component {
     }
 
     state = {
-        formError: '',
-        borderClass: false
+        formError: ''
     }
 
     handleTransition = (e) => {
@@ -22,21 +21,16 @@ export default class AddGeneralInfo extends Component {
         }
     }
 
-    handleButtonFocus = (bool) => {
-        this.setState({borderClass: !this.state.borderClass})
-    }
-
     render() {
         // Set tabIndex
-        const tabIndex = this.props.currentTransition === "0" ? "0" : "-1";
-        const borderClass = this.state.borderClass ? 'add-recipe button-border' : 'add-recipe';
+        const sectionClass = this.props.currentTransition === "0" ? "add-edit-recipe-view general-info" : "add-edit-recipe-view general-info hidden";
         let formError = this.state.formError;
+
         return (
-            <section className="add-edit-recipe-view general-info">
+            <section className={sectionClass}>
                 <div className="add-edit-recipe-label modal-label">Recipe General Info</div>
                 <div className="add-recipe-inputs-wrapper">
                     <input className="add-edit-recipe-input" 
-                        tabIndex={tabIndex}
                         type="text" 
                         placeholder="RECIPE NAME" 
                         onChange={this.props.handleNameChange} 
@@ -44,7 +38,6 @@ export default class AddGeneralInfo extends Component {
                         ref={this.recipeName}
                         required/>
                     <textarea name="recipe-description" 
-                        tabIndex={tabIndex}
                         id="recipe-description" 
                         cols="30" 
                         rows="60" 
@@ -58,14 +51,11 @@ export default class AddGeneralInfo extends Component {
                     <div className="add-recipe-btn-wrapper" id="add-recipe-btn-prime">
                     <p className="form-error">{formError}</p>
                         <button
-                            tabIndex={tabIndex}
-                            className={borderClass}
+                            className="add-recipe"
                             id="generalNext" 
                             type="button" 
                             data-transition="-100" 
                             onClick={this.handleTransition.bind(this)}
-                            onFocus={this.handleButtonFocus}
-                            onBlur={this.handleButtonFocus}
                             >Next
                         </button>    
                     </div>

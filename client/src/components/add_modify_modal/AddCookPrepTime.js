@@ -10,9 +10,7 @@ export default class AddCookPrepTime extends Component {
     }
 
     state = {
-        formError: '',
-        nextBorderClass: false,
-        prevBorderClass: false
+        formError: ''
     }
     
     handleTransition = (e) => {
@@ -27,27 +25,16 @@ export default class AddCookPrepTime extends Component {
         }
     }
 
-    handleNextButtonFocus = () => {
-        this.setState({nextBorderClass: !this.state.nextBorderClass})
-    }
-
-    handlePrevButtonFocus = (bool) => {
-        this.setState({prevBorderClass: !this.state.prevBorderClass})
-    }
-
     render() {
-        let tabIndex = this.props.currentTransition === "-200" ? "0" : "-1";
+        let sectionClass = this.props.currentTransition === "-200" ? "add-edit-recipe-view cook-prep-info" : "add-edit-recipe-view cook-prep-info hidden";
         let formError = this.state.formError;
-        const nextBorderClass = this.state.nextBorderClass ? 'add-recipe button-border' : 'add-recipe';
-        const prevBorderClass = this.state.prevBorderClass ? 'add-recipe button-border' : 'add-recipe';
 
         return (
-            <section className="add-edit-recipe-view cook-prep-info">
+            <section className={sectionClass}>
             <div className="add-edit-recipe-label modal-label">Cook / Prep Time</div>
                 <div className="add-recipe-inputs-wrapper">
                     <div className="prep-time-wrapper">
                         <input className="add-edit-recipe-input" 
-                            tabIndex={tabIndex}
                             type="text" 
                             placeholder="PREP TIME" 
                             onChange={this.props.handlePrepTimeChange1} 
@@ -58,7 +45,6 @@ export default class AddCookPrepTime extends Component {
                         <span className="mins-hours">Minutes</span>
                         
                         <input className="add-edit-recipe-input" 
-                            tabIndex={tabIndex}
                             type="text" 
                             placeholder="PREP TIME" 
                             onChange={this.props.handlePrepTimeChange2} 
@@ -73,7 +59,6 @@ export default class AddCookPrepTime extends Component {
                     
                     <div className="cook-time-wrapper">
                         <input className="add-edit-recipe-input"
-                            tabIndex={tabIndex}
                             type="text"
                             placeholder="COOK TIME"
                             onChange={this.props.handleCookTimeChange1}
@@ -85,7 +70,6 @@ export default class AddCookPrepTime extends Component {
                         <span className="mins-hours">Minutes</span>
 
                         <input className="add-edit-recipe-input"
-                            tabIndex={tabIndex}
                             type="text"
                             placeholder="COOK TIME"
                             onChange={this.props.handleCookTimeChange2}
@@ -100,24 +84,18 @@ export default class AddCookPrepTime extends Component {
                 </div>
                 <div className="add-recipe-btn-wrapper">
                     <button
-                        tabIndex={tabIndex}
-                        className={prevBorderClass} 
+                        className="add-recipe"
                         id="servingsPrevious" 
                         type="button"
                         data-transition="-100"
-                        onFocus={this.handlePrevButtonFocus}
-                        onBlur={this.handlePrevButtonFocus}
                         onClick={this.props.transition}>Previous
                     </button>
                     <p className="form-error">{formError}</p>
                     <button
-                        tabIndex={tabIndex}
-                        className={nextBorderClass}
+                        className="add-recipe"
                         id="servingsNext" 
                         type="button"
                         data-transition="-300"
-                        onFocus={this.handleNextButtonFocus}
-                        onBlur={this.handleNextButtonFocus}
                         onClick={this.handleTransition}>Next
                     </button>
                 </div>
